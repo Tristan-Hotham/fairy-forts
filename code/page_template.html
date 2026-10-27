@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fairy Forts</title>
+<meta name="description" content="Did fairy belief protect Ireland's ringforts? {{n_group.ringfort|int}} ringforts in the Sites and Monuments Record, set against other earthworks of similar build, on the maps of c.1840 and in the survey notes.">
+<meta property="og:title" content="Did fairy belief protect Ireland's ringforts?">
+<meta property="og:description" content="{{n_group.ringfort|int}} ringforts. They kept their place on the map about as well as barrows did, and far better than plain enclosures. The fairies are almost absent from the record.">
+<meta property="og:image" content="https://tristan-hotham.github.io/fairy-forts/header.png">
+<meta property="og:url" content="https://tristan-hotham.github.io/fairy-forts/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800;9..144,900&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+/* Lichen and hawthorn. Moss = still visible. Ochre = damaged. Berry red = no visible trace. */
+:root{
+  --bg:#EEF1E4; --panel:#E2E7D3; --fg:#1C2216; --muted:#5E6852; --rule:#CDD5BB; --card:#F8FAF2; --border:#B9C3A2;
+  --hot:#B3243A; --moss:#3E6B2A; --ochre:#B07A1C; --gone:#B3243A; --none:#9AA38A; --blue:#2F6A8A; --plum:#7A4A8C;
+  --c1:#3E6B2A; --c2:#2F6A8A; --c3:#7A4A8C; --c4:#B07A1C; --c5:#6E7A60; --c6:#A0522D;
+  --h0:#F2F4E8; --h1:#D7E4B8; --h2:#A9C77F; --h3:#6E9E4A; --h4:#3E6B2A; --h5:#1F3D14;
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141812; --panel:#1D2219; --fg:#E9EEDD; --muted:#A3AD93; --rule:#33392C; --card:#1F251B; --border:#46503B;
+  --hot:#F0566E; --moss:#8CC264; --ochre:#E0A93E; --gone:#F0566E; --none:#6A7260; --blue:#6FB0D4; --plum:#C08AD6;
+  --c1:#8CC264; --c2:#6FB0D4; --c3:#C08AD6; --c4:#E0A93E; --c5:#A3AD93; --c6:#E08A5A;
+  --h0:#1D2219; --h1:#2B3A20; --h2:#3E5A2A; --h3:#5E8A3C; --h4:#8CC264; --h5:#CBEBA8; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141812; --panel:#1D2219; --fg:#E9EEDD; --muted:#A3AD93; --rule:#33392C; --card:#1F251B; --border:#46503B;
+  --hot:#F0566E; --moss:#8CC264; --ochre:#E0A93E; --gone:#F0566E; --none:#6A7260; --blue:#6FB0D4; --plum:#C08AD6;
+  --c1:#8CC264; --c2:#6FB0D4; --c3:#C08AD6; --c4:#E0A93E; --c5:#A3AD93; --c6:#E08A5A;
+  --h0:#1D2219; --h1:#2B3A20; --h2:#3E5A2A; --h3:#5E8A3C; --h4:#8CC264; --h5:#CBEBA8; color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 18px/1.62 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));overflow-x:hidden}
+.wrap{max-width:680px;margin:0 auto;padding-block:28px 64px}
+.wrap .bleed{width:min(1080px,calc(100vw - 32px));margin-left:calc((100% - min(1080px,100vw - 32px))/2);margin-right:0}
+a{color:inherit;text-decoration-color:var(--hot);text-underline-offset:3px}
+.kicker{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.kicker b{background:var(--moss);color:#fff;padding:5px 8px;font-weight:500}
+.kicker a{text-decoration:none}
+header.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 24px;align-items:end;border-bottom:6px double var(--fg);padding-bottom:22px;margin-top:18px}
+h1{font:900 clamp(46px,11vw,96px)/.9 var(--display);letter-spacing:-.02em;margin:0;text-wrap:balance;font-variation-settings:"SOFT" 50}
+h1 em{font-style:normal;color:var(--hot)}
+.mark{width:clamp(84px,19vw,160px);height:auto;display:block}
+.dek{grid-column:1/-1;font-size:21px;line-height:1.42;margin:8px 0 0;max-width:46ch}
+.byline{font:400 13px/1.4 var(--mono);color:var(--muted);margin-top:14px}
+h2{font:800 34px/1.04 var(--display);letter-spacing:-.01em;margin:52px 0 10px;text-wrap:balance}
+h2 .n{font:500 13px/1 var(--mono);color:var(--hot);display:block;letter-spacing:.1em;margin-bottom:10px}
+h3{font:600 20px/1.25 var(--display);margin:28px 0 6px}
+p{margin:0 0 16px}
+.lede::first-letter{font:900 72px/.8 var(--display);float:left;margin:6px 10px 0 0;color:var(--moss)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:26px 0 8px}
+.stats div{background:var(--card);padding:14px 12px}
+.stats b{display:block;font:900 clamp(28px,6vw,40px)/1 var(--display);color:var(--fg)}
+.stats b.h{color:var(--hot)}.stats b.g{color:var(--moss)}
+.stats span{font:400 12px/1.35 var(--mono);color:var(--muted);display:block;margin-top:6px}
+@media (max-width:600px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.figure{margin:26px 0 30px}
+.fig-h{font:600 19px/1.25 var(--display);margin:0 0 4px}
+.fig-sub{font:400 13px/1.45 var(--mono);color:var(--muted);margin:0 0 12px}
+.src{font:400 12px/1.45 var(--mono);color:var(--muted);margin-top:10px}
+.chart{width:100%;position:relative}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--mono);fill:var(--fg)}
+.lab{font-size:12px}.lab.m{fill:var(--muted)}.lab.b{font-weight:500}.lab.s{font-size:11px}
+.tip{position:absolute;pointer-events:none;background:var(--fg);color:var(--bg);font:400 12px/1.45 var(--mono);padding:8px 10px;border-radius:3px;max-width:280px;z-index:1000;transform:translate(-50%,calc(-100% - 12px));display:none}
+.tip b{font-weight:500}
+.controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 10px}
+.btn{font:500 12px/1 var(--mono);background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:3px;padding:8px 10px;cursor:pointer;min-height:36px}
+.btn[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.btn:focus-visible,input:focus-visible{outline:2px solid var(--hot);outline-offset:2px}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:3px;overflow:hidden;max-width:100%}
+.seg .btn{border:0;border-radius:0;border-right:1px solid var(--border)}
+.seg .btn:last-child{border-right:0}
+.searchbox{position:relative;flex:1 1 200px;min-width:0}
+input[type=search]{font:400 14px/1 var(--mono);background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:3px;padding:9px 10px;min-height:36px;width:100%}
+.suggest{position:absolute;left:0;right:0;top:100%;margin:2px 0 0;padding:0;list-style:none;background:var(--card);border:1px solid var(--border);z-index:1001;font:400 13px/1.3 var(--mono);display:none;max-height:300px;overflow:auto}
+.suggest li{padding:8px 10px;cursor:pointer;border-bottom:1px solid var(--rule)}
+.suggest li span{color:var(--muted)}
+.suggest li[aria-selected="true"],.suggest li:hover{background:var(--panel)}
+#lmap{height:680px;border:1px solid var(--border);background:var(--panel);border-radius:2px}
+#gbmap{height:520px;border:1px solid var(--border);background:var(--panel);border-radius:2px}
+@media (max-width:600px){#lmap{height:520px}#gbmap{height:440px}}
+.leaflet-container{font:400 12px/1.4 var(--mono);background:var(--panel)}
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--card);color:var(--fg);border-radius:3px;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.leaflet-popup-content{margin:12px 14px;font:400 12.5px/1.45 var(--mono);min-width:220px}
+.leaflet-container a.leaflet-popup-close-button{color:var(--muted)}
+.leaflet-bar a,.leaflet-bar a:hover{background:var(--card);color:var(--fg);border-bottom-color:var(--border)}
+.leaflet-control-attribution{background:color-mix(in srgb,var(--card) 85%,transparent)!important;color:var(--muted)}
+.leaflet-control-attribution a{color:var(--fg)}
+.pop b.t{font:600 17px/1.2 var(--display);display:block;margin-bottom:2px}
+.pop .c{color:var(--muted);margin-bottom:6px}
+.pop dl{display:grid;grid-template-columns:auto 1fr;gap:1px 10px;margin:4px 0 6px}
+.pop dt{color:var(--muted)}.pop dd{margin:0}
+.pop .note{font-size:11.5px;color:var(--muted);margin:4px 0}
+.pop q{font-style:italic}
+.legend{display:flex;gap:6px 14px;flex-wrap:wrap;font:400 12px/1.3 var(--mono);color:var(--muted);margin-top:8px}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px;border:1px solid var(--bg)}
+.legend i.sq{border-radius:1px}
+.pull{font:600 26px/1.25 var(--display);border-left:6px solid var(--hot);padding:4px 0 4px 18px;margin:30px 0}
+.note{background:var(--panel);border:1px solid var(--rule);padding:14px 16px;font-size:16px;margin:22px 0}
+.note h3{margin-top:0}
+.quotes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0}
+@media (max-width:600px){.quotes{grid-template-columns:1fr}}
+.quote{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--moss);padding:12px 14px;margin:0}
+.quote p{font:italic 400 16.5px/1.45 var(--body);margin:0 0 8px}
+.quote footer{border:0;margin:0;padding:0;font:400 12px/1.4 var(--mono);color:var(--muted)}
+table.t{width:100%;border-collapse:collapse;font:400 13px/1.35 var(--mono)}
+table.t th{text-align:left;font-weight:500;color:var(--muted);border-bottom:2px solid var(--fg);padding:6px 8px 6px 0}
+table.t td{border-bottom:1px solid var(--rule);padding:7px 8px 7px 0;vertical-align:top}
+table.t td.num,table.t th.num{text-align:right;white-space:nowrap}
+.tablewrap{overflow-x:auto}
+@media (max-width:600px){table.t .wide{display:none}}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+.cta a{font:500 13px/1 var(--mono);text-decoration:none;border:1px solid var(--fg);padding:11px 14px;border-radius:3px}
+.cta a.p{background:var(--moss);border-color:var(--moss);color:#fff}
+footer.site{border-top:6px double var(--fg);margin-top:56px;padding-top:16px;font:400 13px/1.55 var(--mono);color:var(--muted)}
+footer.site p{margin:0 0 10px}
+.theme{position:fixed;right:12px;bottom:12px;z-index:1002}
+@media print{.theme,.controls{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="kicker"><b>Data study</b><span>History × data</span><span>Ireland, c.1840 to now</span><a href="https://blog.tristanhotham.com/">Blog home</a></div>
+<header class="hero">
+  <h1>Did <em>fairy</em> belief protect Ireland's ringforts?</h1>
+  <svg class="mark" viewBox="-100 -100 200 200" aria-hidden="true"><g id="heroMark"></g></svg>
+  <p class="dek">Ireland has tens of thousands of ringforts, long known as fairy forts that it was unlucky to disturb. I set every one in the national record against other earthworks of similar build to see whether the ringforts survived better. At first sight they did. But most of that advantage comes from how sites are classed, and the fairies are hard to find in the evidence.</p>
+</header>
+<div class="byline">Dr Tristan Hotham, Independent researcher · October 2026 · Data: Sites and Monuments Record, National Monuments Service (CC BY 4.0)</div>
+
+<div class="stats">
+  <div><b>{{n_group.ringfort|int}}</b><span>ringforts in the record for the Republic of Ireland</span></div>
+  <div><b class="g">{{map_by_group.ringfort.share|pct}}</b><span>of ringforts drawn on the map of c.1840 are still drawn on the latest edition (barrows {{map_by_group.barrow.share|pct}})</span></div>
+  <div><b class="h">{{gone_by_group_1840.ringfort.share|pct}}</b><span>of those ringforts now have no visible trace, against {{gone_by_group_1840.enclosure.share|pct}} of plain enclosures</span></div>
+  <div><b>{{folk.ringfort_n|int}}</b><span>of {{folk.ringfort_notes|int}} ringfort notes mention fairies, superstition or bad luck</span></div>
+</div>
+
+<p class="lede">A ringfort is a round farmstead of the early Middle Ages: a circular bank and ditch, or a drystone wall, around a family's houses and animals. In Irish they are the <i>ráth</i> and the <i>lios</i>, or the <i>caiseal</i> and <i>cathair</i> when built of stone, and those words run through thousands of place names.</p>
+<p>They are also fairy forts. Folklore across Ireland held that the <i>aos sí</i>, the people of the mounds, lived in them, and that ploughing, levelling or cutting a thorn bush in one brought bad luck. People often say that this belief is why so many ringforts survive. It is a lovely idea, and it can be tested, at least in part.</p>
+<p>The National Monuments Service keeps a record of every known archaeological site in the Republic: {{smr_total|int}} entries. {{n_group.ringfort|int}} of them are ringforts, {{ringfort_share_of_smr|pct}} of the whole record. For many, the record notes how the site was drawn on the first Ordnance Survey six-inch maps of the 1830s and 1840s, how it appears on the latest edition, and what the surveyors found on the ground. That lets me ask a simple question. Did ringforts survive better than other earthworks of similar build and age that carried less of the folklore?</p>
+
+<h2><span class="n">01 · The map</span>Every ringfort in the record</h2>
+<p>Each dot is a monument. The colour shows what its notes say about it now: still visible, damaged, or no visible trace left. Switch to the hexagons to see how thick on the ground the ringforts are, or where most have gone. Use the buttons to add the other earthworks I compare them with, or search for a townland.</p>
+<div class="figure bleed">
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Map layer">
+      <button class="btn" data-layer="dots" aria-pressed="true">Condition now</button>
+      <button class="btn" data-layer="map" aria-pressed="false">On the maps</button>
+      <button class="btn" data-layer="dens" aria-pressed="false">Density</button>
+      <button class="btn" data-layer="lost" aria-pressed="false">Share gone</button>
+    </div>
+    <div class="seg" role="group" aria-label="Which monuments">
+      <button class="btn" data-set="rf" aria-pressed="true">Ringforts</button>
+      <button class="btn" data-set="other" aria-pressed="false">Other earthworks</button>
+    </div>
+    <div class="searchbox">
+      <input type="search" id="q" placeholder="Find a townland, e.g. Monsea" aria-label="Find a townland" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="sug">
+      <ul class="suggest" id="sug" role="listbox"></ul>
+    </div>
+  </div>
+  <div id="lmap" role="region" aria-label="Map of ringforts in the Republic of Ireland coloured by their condition in the survey notes"></div>
+  <div class="legend" id="legend"></div>
+  <div class="src">Points from the Sites and Monuments Record (National Monuments Service, CC BY 4.0). "Condition now" is read from the survey notes; grey dots have no notes yet online. "On the maps" compares the first OS six-inch edition (c.1840) with the latest edition in the record. Hexagons are {{hex.area_km2|f1}} km² ({{hex.side_km|int}} km sides), shaded by ringforts per km² of land, or by the share of ringforts with notes that have no visible trace (at least 10 with notes). Click the map to let the scroll wheel zoom it.</div>
+</div>
+<p>The ringforts cover the country, but not evenly. Across the Republic there are about {{ringforts_per_km2|f2}} per square kilometre, one for every {{km2_per_ringfort|f1}} km². {{county_densest.county}} is the densest county, with {{county_densest.ringforts_per_km2|f2}} per km²; {{county_sparsest.county}} the sparsest, with {{county_sparsest.ringforts_per_km2|f2}}. {{county_most_ringforts.county}} has the most, {{county_most_ringforts.ringforts|int}}. In the busiest hexagons there are more than three ringforts in every square kilometre, and {{hex.n_over_1|int}} of the {{hex.n|int}} hexagons have at least one per km².</p>
+<div class="figure">
+  <div class="fig-h">Ringforts per km², by county</div>
+  <div class="fig-sub">Raths, cashels and unclassified ringforts. County areas from the official figures.</div>
+  <div class="chart" id="dens"></div>
+  <div class="src">Tipperary North and South combined. Some of the difference between counties is about how hard each county's surveyors looked, and how they classed what they found.</div>
+</div>
+
+<h2><span class="n">02 · Two measures</span>How do you count what has gone?</h2>
+<p>I use two measures of survival, and neither is perfect.</p>
+<p><b>On the maps.</b> The first Ordnance Survey six-inch maps of Ireland were surveyed in the 1830s and 1840s, and they drew a great many forts. The record says, for each site, how it was drawn on that first edition and on the latest edition. Where the latest edition gives a date, the median is {{latest_year.median|raw}} (half fall between {{latest_year.q25|raw}} and {{latest_year.q75|raw}}). So, for every earthwork drawn around 1840, I can ask: was it still drawn about eighty years later? That covers the age of the Famine, emigration and the great shift from tillage to grazing.</p>
+<p><b>In the notes.</b> For ringforts, enclosures and souterrains, the record holds the surveyors' descriptions, most of them written for the county inventories from the 1980s onwards and revised since. I read every note with a set of rules that pick out phrases such as "levelled", "no visible surface trace", "destroyed", "removed", "not visible at ground level" or "visible only as a cropmark". Notes that mention only partial damage, such as a bank levelled at one side, count as damaged, not gone.</p>
+<p>A check against a fresh random sample of {{validation.n|int}} notes, each read in full, found the rules agreed {{validation.agree|int}} times out of {{validation.n|int}}. In {{validation.false_gone|int}} cases the rules called a site gone when part of it survives, and in {{validation.missed_gone|int}} they missed a site that has gone, so the errors lean slightly towards overcounting loss. {{notes.ringfort.placeholder|int}} ringfort records ({{notes.ringfort.placeholder_share|pct}}) and {{notes.enclosure.placeholder|int}} enclosure records only hold a placeholder saying the description is not yet online. I leave those out. They are not spread evenly: in {{county_placeholder_max.county}}, {{county_placeholder_max.ringfort_placeholder_share|pct}} of ringfort records are placeholders.</p>
+
+<h2><span class="n">03 · The baseline</span>Ringforts against other earthworks</h2>
+<p>If fairy belief protected ringforts, they should have survived better than earthworks that are similar in size and build but carried less of the lore. The record offers several: plain <i>enclosures</i> (round or oval banks the survey could not firmly call ringforts), <i>barrows</i> (prehistoric burial mounds, often ringed by a bank and ditch), <i>moated sites</i> (the square, ditched homesteads of Anglo-Norman settlers), <i>mounds</i> and <i>earthworks</i> of uncertain type.</p>
+<div class="figure">
+  <div class="controls"><div class="seg" role="group" aria-label="Raw or adjusted"><button class="btn" data-adj="raw" aria-pressed="true">Raw share</button><button class="btn" data-adj="adj" aria-pressed="false">Adjusted for county, height and slope</button></div></div>
+  <div class="fig-h">Still drawn on the latest map, of those drawn around 1840</div>
+  <div class="fig-sub">Share of each kind of earthwork drawn on the first OS six-inch edition that is still drawn on the latest edition. Lines show 95% intervals.</div>
+  <div class="chart" id="mapgrp"></div>
+  <div class="src">Only sites whose first-edition depiction is given in the record's own field. Fulachta fia (burnt mounds) are left out: only {{map_by_group.fulacht fia.n|int}} were drawn around 1840. Adjusted shares come from a logistic regression with county, elevation and slope, averaged over all {{map_model_n|int}} sites as if each were of the given kind; the pooled bar comes from a second model with ringforts and enclosures as one group.</div>
+</div>
+<p>On this measure ringforts did well. Of the {{map_by_group.ringfort.n|int}} drawn around 1840, {{map_by_group.ringfort.share|pct1}} were still drawn on the latest edition. Enclosures managed {{map_by_group.enclosure.share|pct1}} and the miscellaneous earthworks {{map_by_group.earthwork.share|pct1}}. But barrows, which are not fairy forts, did just as well, at {{map_by_group.barrow.share|pct1}}, and moated sites were close behind at {{map_by_group.moated site.share|pct1}}. Allowing for county, height and slope, ringforts come out {{premium_map_vs_barrow_pp|f1}} percentage points ahead of barrows and {{premium_map_vs_moated_pp|f1}} ahead of moated sites, but {{premium_map_vs_enclosure_pp|f1}} ahead of enclosures.</p>
+<p class="pull">Ringforts kept their place on the map far better than plain enclosures. But barrows kept theirs just as well.</p>
+
+<h2><span class="n">04 · The notes</span>What is left today</h2>
+<p>The notes tell a similar story with bigger numbers. Of the ringforts drawn around 1840 that have notes, {{gone_by_group_1840.ringfort.share|pct1}} now have no visible trace. For enclosures drawn at the same time the figure is {{gone_by_group_1840.enclosure.share|pct1}}. Adjusted for county, height and slope the gap barely moves: {{gone_adjusted_1840.ringfort|pct1}} against {{gone_adjusted_1840.enclosure|pct1}}. Counting partial damage too, {{damaged_or_gone_1840.ringfort.share|pct}} of these ringforts are damaged or gone, against {{damaged_or_gone_1840.enclosure.share|pct}} of enclosures.</p>
+<div class="figure">
+  <div class="fig-h">No visible trace today, of sites drawn around 1840</div>
+  <div class="fig-sub">Share of each class whose survey notes say nothing visible survives. Sites drawn on the first OS six-inch edition, with notes online.</div>
+  <div class="chart" id="gonecls"></div>
+</div>
+<p>That looks like a fairy premium of about {{premium_gone_vs_enclosure_pp|f1}} percentage points. I do not think it is, or not much of one, and the reason is in the chart. Look at the <i>unclassified</i> ringforts: {{gone_by_class_1840.Ringfort - unclassified.share|pct}} of them have gone, more than enclosures. The record's classes depend on what survives. A site with a good bank, ditch and entrance can be called a ringfort; one levelled before anyone looked closely often cannot, and becomes an "enclosure" or an "unclassified" ringfort. So the word "ringfort" in the record already means, in part, "survived well enough to be recognised". Comparing ringforts with enclosures builds survival into the comparison.</p>
+<p>The map measure is touched by the same problem. Unclassified ringforts drawn around 1840 were still on the latest map in only {{map_by_class.Ringfort - unclassified.share|pct1}} of cases, against {{map_by_class.Ringfort - rath.share|pct1}} for raths. The fairest test I can make is to stop letting survival decide what counts as a ringfort, and pool ringforts and enclosures together as round earthworks. Of the {{map_pooled_raw.n|int}} drawn around 1840, {{map_pooled_raw.share|pct1}} were still drawn on the latest edition. Adjusted for county, height and slope that is {{map_pooled_adjusted.round earthwork|pct1}}, against {{map_pooled_adjusted.barrow|pct1}} for barrows and {{map_pooled_adjusted.moated site|pct1}} for moated sites.</p>
+<p class="pull">Count every round earthwork drawn in 1840, not just the ones later called ringforts, and they kept their place on the map no better than barrows or Anglo-Norman moated sites.</p>
+
+<h2><span class="n">05 · Height and slope</span>Where the plough reached</h2>
+<p>Land quality matters more than lore. I have no soil map here, so I use height and slope from a terrain model as rough stand-ins: lower, flatter land is easier to plough, drain and improve. Ringforts on low ground were much more often lost than those on higher ground. In the notes model, each extra 100 metres of height cuts the odds of a site having gone by about a quarter (odds ratio {{gone_or_per100m|f2}}). Slope, at this scale, makes little difference (odds ratio {{gone_or_per_degree|f2}} per degree).</p>
+<div class="figure">
+  <div class="fig-h">No visible trace today, by height above sea level</div>
+  <div class="fig-sub">Sites drawn on the first OS six-inch edition, with notes online.</div>
+  <div class="chart" id="elev"></div>
+  <div class="src">Heights from AWS Terrain Tiles (zoom 10, about 90 m pixels) at each site's recorded position.</div>
+</div>
+<p>The ringfort and enclosure lines stay far apart at every height, which fits the idea that the gap is mostly about classification. The ringfort line falls from {{elev_bands.0.gone_ringfort.share|pct}} below 50 metres to {{elev_bands.4.gone_ringfort.share|pct}} at 200 metres and over.</p>
+
+<h2><span class="n">06 · The fairies</span>Hardly in the record at all</h2>
+<p>If fear of the fairies kept the plough away, you might expect the surveyors to hear about it. They rarely wrote it down. I searched all {{folk.notes_searched|int}} notes for fairies, the <i>sí</i>, the <i>púca</i>, superstition, bad luck, ghosts and the word <i>liosachán</i> (a little fort, glossed in one note as a fairy fort). Only {{folk.n|int}} notes match, {{folk.ringfort_n|int}} of them for ringforts: about {{folk.per_10000_ringfort_notes|f1}} in every 10,000 ringfort notes. That says more about what an archaeological inventory records than about what people believed. But it means the record cannot show belief protecting any particular site.</p>
+<p>The handful that do mention the fairies are a mixed lot, and several describe sites that went anyway.</p>
+<div class="quotes" id="quotes"></div>
+<p>Of the {{folk.ringfort_n|int}} ringforts whose notes mention such beliefs, {{folk.gone_ringfort.k|int}} now have no visible trace. That is too few to compare, and a story may be more likely to be written down when a site has been destroyed.</p>
+
+<h2><span class="n">07 · Names</span>Lios, ráth and named forts</h2>
+<p>Two other clues point at local attention. First, townland names. {{townlands_fortname_distinct|int}} of the {{townlands_distinct_in_scope|int}} townlands holding these earthworks begin with Lis, Lios, Rath, Raheen, Caher or Cahir, or contain the word Rath, from the Irish words for a fort. Second, the 1840 map: some forts were written on it with a word, usually "Fort", or a name such as {{named_examples|names}}; others were simply drawn.</p>
+<div class="figure">
+  <div class="controls"><div class="seg" role="group" aria-label="Which comparison"><button class="btn" data-nm="town" aria-pressed="true">Townland names</button><button class="btn" data-nm="lab" aria-pressed="false">Named on the 1840 map</button></div></div>
+  <div class="fig-h" id="nmH"></div>
+  <div class="fig-sub" id="nmS"></div>
+  <div class="chart" id="names"></div>
+</div>
+<p>Ringforts in fort-named townlands have gone slightly less often: {{townland_fortname_gone_raw.share|pct1}} against {{townland_other_gone_raw.share|pct1}} (adjusted, {{townland_gone_adjusted.fortname|pct1}} against {{townland_gone_adjusted.other|pct1}}). Forts named on the 1840 map look much safer at first: {{labelled.named.gone.share|pct1}} of ringforts and enclosures named then have gone, against {{labelled.unnamed.gone.share|pct1}} of unnamed ones. But named sites are mostly ringforts ({{labelled.named.ringfort_share|pct}}) and sit in counties with less loss. Among ringforts alone, adjusted for county, height and slope, the difference vanishes: {{labelled_gone_adjusted_ringforts.named|pct1}} named against {{labelled_gone_adjusted_ringforts.unnamed|pct1}} unnamed.</p>
+
+<h2><span class="n">08 · Counties</span>The gap, county by county</h2>
+<p>In every one of the {{county_gap_gone.n|int}} counties with enough data, a smaller share of ringforts than of enclosures has gone. The median gap is {{county_gap_gone.median|f1}} points, from {{county_gap_gone.min.gap_gone_pp|f1}} in {{county_gap_gone.min.county}} to {{county_gap_gone.max.gap_gone_pp|f1}} in {{county_gap_gone.max.county}}. On the map measure, ringforts beat the other earthworks in {{county_gap_map.positive|int}} of {{county_gap_map.n|int}} counties.</p>
+<div class="figure">
+  <div class="controls"><div class="seg" role="group" aria-label="County measure"><button class="btn" data-cm="gone" aria-pressed="true">No visible trace now</button><button class="btn" data-cm="map" aria-pressed="false">Still on the map</button></div></div>
+  <div class="fig-h" id="ctyH"></div>
+  <div class="fig-sub" id="ctyS"></div>
+  <div class="chart" id="cty"></div>
+</div>
+<p>The county figures for ringforts alone vary hugely: from {{county_gone_min.ringfort_gone_1840|pct1}} gone in {{county_gone_min.county}} to {{county_gone_max.ringfort_gone_1840|pct}} in {{county_gone_max.county}}. Some of that is real, but some will be how each county's inventory team wrote its notes. I would not rank counties on it.</p>
+
+<h2><span class="n">09 · Across the water</span>Fairies on the map of Britain</h2>
+<p>Britain has its own small folk, and some of them are on the Ordnance Survey map. In OS Open Names I count {{gb.n|int}} named features containing the words fairy, Puck, pixie, Hob or boggart: {{gb.by_element.fairy|int}} fairy names, {{gb.by_element.hob|int}} Hob, {{gb.by_element.puck|int}} Puck, {{gb.by_element.pixie|int}} pixie and {{gb.by_element.boggart|int}} boggart. There are {{gb.fairy_hillock|int}} fairy hillocks, and {{gb.fairy_hillock_by_country.Scotland|int}} of them are in Scotland. These are names on a modern map, not a survey of belief, and some Puck and Hob names may come from other words or surnames.</p>
+<div class="figure">
+  <div id="gbmap" role="region" aria-label="Map of fairy, Puck, pixie, Hob and boggart names in Great Britain"></div>
+  <div class="legend" id="gblegend"></div>
+  <div class="src">OS Open Names, Ordnance Survey (OGL v3). Contains OS data © Crown copyright and database right 2026.</div>
+</div>
+
+<h2><span class="n">10 · So</span>Did the fairies do it?</h2>
+<p>The honest answer is: not in any way the national record can see. Ringforts drawn around 1840 kept their place on the map far better than plain enclosures and earthworks, and their notes record far less loss. But barrows, which are not the forts of the fairy stories, survived on the maps just as well. Much of the gap with enclosures comes from how sites are classed, and when ringforts and enclosures are counted together the advantage over barrows and moated sites disappears ({{premium_pooled_vs_barrow_pp|f1}} and {{premium_pooled_vs_moated_pp|f1}} percentage points). Any small edge the best ringforts have could come from their being bigger, better built, or simply useful, as easily as from fear of the <i>sí</i>.</p>
+<p>None of this means the belief did nothing. Some people clearly did leave forts alone, and say so. But on the evidence of the national record, what protected Ireland's ringforts was mostly their number, their height above the best land, and luck. The fairies may have saved some forts, one field at a time. They have left very few fingerprints.</p>
+
+<div class="note" id="method">
+  <h3>How I did this</h3>
+  <p><b>Data.</b> The full Sites and Monuments Record for the Republic of Ireland ({{smr_total|int}} records in {{smr_classes|int}} classes), from the National Monuments Service's open data service. I keep {{earthworks_in_scope|int}} earthworks: ringforts (raths, cashels and unclassified, {{n_group.ringfort|int}}), enclosures ({{n_group.enclosure|int}}), barrows of all kinds ({{n_group.barrow|int}}), moated sites ({{n_group.moated site|int}}), earthworks ({{n_group.earthwork|int}}), mounds ({{n_group.mound|int}}), souterrains ({{n_group.souterrain|int}}) and fulachta fia ({{n_group.fulacht fia|int}}). Notes exist only for ringforts, enclosures and souterrains.</p>
+  <p><b>Map survival.</b> A site counts as drawn around 1840 when the record's first-edition field describes a depiction (hachured, indicated, outlined, embanked enclosure or a written name) and as still drawn when the latest-edition field does too. Fields that are blank or "NULL" are unknown and left out. The notes often mention the first edition too, but they mention it far more often for sites that have since gone, so I ignore those mentions ({{first_dep_from_notes_ignored|int}} sites). For {{first_dep_by_group.ringfort.unknown|int}} ringforts the first-edition field is blank, and coverage varies by county: the field is filled for fewer than one in ten ringforts in {{first_field_low|list}}, so those counties barely enter the map test.</p>
+  <p><b>Notes.</b> Rules based on regular expressions, applied sentence by sentence, mark a note "gone" when it says the monument as a whole has no visible surface trace, has been levelled, destroyed or removed, is not visible at ground level, or is known only from aerial images or a cropmark; "damaged" when it mentions partial levelling or removal; otherwise "visible". The check on {{validation.n|int}} randomly drawn notes is in the data folder.</p>
+  <p><b>Statistics.</b> Shares with Wilson 95% intervals. Adjusted shares come from logistic regressions with county fixed effects (counties with fewer than 30 sites or no variation left out), elevation and slope, averaged over the sample as if every site belonged to each group. Elevation and slope come from AWS Terrain Tiles at zoom 10. Hexagons are drawn on the Irish Transverse Mercator grid.</p>
+  <p><b>Limits.</b> The record is a survey of what was noticed and recorded, not a census of what was built. Survival is a proxy, and the classes partly depend on survival. Association is not cause: ringforts differ from the other earthworks in size, date, build and use. The notes for some counties are mostly placeholders. Northern Ireland has its own record and is not included.</p>
+</div>
+<div class="cta">
+  <a class="p" href="https://github.com/Tristan-Hotham/fairy-forts">Data and code</a>
+  <a href="https://doi.org/10.5281/zenodo.23691874">Paper (Zenodo)</a>
+  <a href="https://blog.tristanhotham.com/">Blog</a>
+  <a href="https://tristan-hotham.github.io/within-sight/">Within Sight: hillforts</a>
+  <a href="https://tristan-hotham.github.io/famous-few/">The Famous Few</a>
+</div>
+<footer class="site">
+  <p>Dr Tristan Hotham, Independent researcher. ORCID <a href="https://orcid.org/0000-0003-4931-9349">0000-0003-4931-9349</a>. Cite as: Hotham, T. (2026) Did fairy belief protect Ireland's ringforts? <a href="https://doi.org/10.5281/zenodo.23691874">https://doi.org/10.5281/zenodo.23691874</a></p>
+  <p>I wrote the text, with drafting and editing assistance from Claude (Anthropic), which also helped prepare the analysis code. I reviewed and checked all text and results.</p>
+  <p>Sites and Monuments Record: National Monuments Service, Department of Housing, Local Government and Heritage, Archaeological Survey of Ireland, licensed under CC BY 4.0. Quotations in the cards are from the record's notes. Elevation: AWS Terrain Tiles (Mapzen/Tilezen). Outline of Ireland: Natural Earth. County areas: Wikipedia, List of Irish counties by area. Place names in Britain: OS Open Names, Ordnance Survey, Open Government Licence v3.0; contains OS data © Crown copyright and database right 2026. Base map tiles © Esri, HERE, Garmin, © OpenStreetMap contributors, and the GIS user community.</p>
+  <p>The derived data and the text of this page are released under CC BY 4.0. The code is released under the MIT licence.</p>
+</footer>
+</div>
+<div class="tip" id="tip"></div>
+<button class="btn theme" id="theme" aria-label="Toggle dark mode">◐</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+const D = /*SITE*/;
+const R = /*RESULTS*/;
+const NS = "http://www.w3.org/2000/svg";
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const el = (t, a = {}, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; };
+const fmt = n => n == null ? "n/a" : Math.round(n).toLocaleString("en-GB");
+const pc = (x, d = 0) => x == null ? "n/a" : (x * 100).toFixed(d) + "%";
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const tip = document.getElementById("tip");
+function showTip(h, x, y) { tip.innerHTML = h; tip.style.display = "block"; const w = tip.offsetWidth; x = Math.max(w / 2 + 8, Math.min(innerWidth - w / 2 - 8, x)); tip.style.left = x + scrollX + "px"; tip.style.top = y + scrollY + "px"; }
+function hideTip() { tip.style.display = "none"; }
+function hover(node, h) { node.style.cursor = "pointer"; node.setAttribute("tabindex", "0"); const s = () => { const r = node.getBoundingClientRect(); showTip(h, r.left + r.width / 2, r.top); }; node.addEventListener("pointerenter", s); node.addEventListener("pointerleave", hideTip); node.addEventListener("focus", s); node.addEventListener("blur", hideTip); node.addEventListener("click", e => { s(); e.stopPropagation(); }); }
+document.addEventListener("click", hideTip);
+const redraws = [];
+function resp(box, render) { let last = 0; const go = (force) => { const w = Math.max(280, Math.round(box.clientWidth)); if (!force && Math.abs(w - last) < 4) return; last = w; box.innerHTML = ""; render(w, w < 560); }; new ResizeObserver(() => go()).observe(box); go(); redraws.push(() => go(true)); }
+const lbl = (svg, x, y, s, cls = "lab", anchor = "start") => { const t = el("text", { x, y, class: cls, "text-anchor": anchor }, svg); t.textContent = s; return t; };
+const isDark = () => { const r = document.documentElement; return r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; };
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+document.getElementById("theme").onclick = () => { const r = document.documentElement; r.dataset.theme = isDark() ? "light" : "dark"; redraws.forEach(f => f()); };
+
+/* hero mark: a ringfort, bank and ditch, with a hawthorn */
+(() => { const g = document.getElementById("heroMark");
+  el("circle", { r: 82, fill: "none", stroke: "var(--moss)", "stroke-width": 14, opacity: .35 }, g);
+  el("circle", { r: 64, fill: "none", stroke: "var(--moss)", "stroke-width": 10 }, g);
+  el("circle", { r: 64, fill: "none", stroke: "var(--bg)", "stroke-width": 12, "stroke-dasharray": "22 380", transform: "rotate(-30)" }, g);
+  for (let i = 0; i < 9; i++) { const a = i / 9 * Math.PI * 2, rr = 26 + (i % 3) * 7; el("circle", { cx: (Math.cos(a) * rr).toFixed(1), cy: (Math.sin(a) * rr).toFixed(1), r: 6 + (i % 2) * 3, fill: "var(--fg)", opacity: .12 }, g); }
+  el("circle", { cx: 6, cy: -4, r: 10, fill: "var(--hot)" }, g);
+})();
+
+/* ===== map ===== */
+const ST = [["--moss", "Still visible"], ["--ochre", "Damaged"], ["--gone", "No visible trace"], ["--none", "No notes online"]];
+const MP = [["--moss", "Drawn c.1840 and on the latest map"], ["--gone", "Drawn c.1840, gone from the latest map"], ["--blue", "Not drawn c.1840"], ["--none", "Unknown"]];
+const P = D.pts.map(a => ({ lat: a[0], lng: a[1], g: a[2], cls: D.classes[a[3]], st: a[4], f: a[5], fl: a[6], l: a[7], county: D.counties[a[8]], tl: D.townlands[a[9]], id: a[10], el: a[11], folk: a[12] }));
+P.forEach(p => { p.mc = p.f === 1 ? (p.l === 1 ? 0 : p.l === 0 ? 1 : 3) : p.f === 0 ? 2 : 3; });
+let layer = "dots", showOther = false, lmap, tiles, markers = [], hexL;
+const edtxt = (v, lab) => v === 1 ? (lab === 1 ? "drawn and named" : "drawn") : v === 0 ? "not drawn" : "not stated";
+function popup(p) {
+  const row = (k, v) => `<dt>${k}</dt><dd>${v}</dd>`;
+  let h = `<div class="pop"><b class="t">${esc(p.tl || "Unnamed townland")}</b><div class="c">${esc(p.cls)} · Co. ${esc(p.county)} · ${esc(p.id)}</div><dl>`;
+  h += row("Map c.1840", edtxt(p.f, p.fl)) + row("Latest map", edtxt(p.l, 0)) + row("Notes say", p.st === 3 ? "no notes online" : ST[p.st][1].toLowerCase()) + row("Height", p.el + " m") + "</dl>";
+  if (p.folk && D.folk[p.id]) h += `<div class="note">From the notes: <q>${esc(D.folk[p.id].slice(0, 420))}${D.folk[p.id].length > 420 ? "..." : ""}</q></div>`;
+  return h + `<div class="note">Look up ${esc(p.id)} on the Historic Environment Viewer of the National Monuments Service.</div></div>`;
+}
+function colOf(p) { return layer === "map" ? css(MP[p.mc][0]) : css(ST[p.st][0]); }
+function rad(z) { return Math.max(1.6, Math.min(7, 1.5 * Math.pow(1.35, z - 7))); }
+function hexCol(f) { const pr = f.properties; const H = ["--h1", "--h2", "--h3", "--h4", "--h5"].map(css);
+  if (layer === "dens") { const v = pr.per_km2; const i = v < 0.15 ? 0 : v < 0.3 ? 1 : v < 0.6 ? 2 : v < 1 ? 3 : 4; return H[i]; }
+  const v = pr.gone_share; if (v == null) return css("--panel"); const G = ["#F6E3E2", "#EDB3B5", "#DC7680", "#C2404F", "#8A1427"]; return G[v < .1 ? 0 : v < .2 ? 1 : v < .35 ? 2 : v < .5 ? 3 : 4]; }
+function legend() { const box = document.getElementById("legend");
+  if (layer === "dens") box.innerHTML = "<span>Ringforts per km²:</span>" + ["under 0.15", "0.15 to 0.3", "0.3 to 0.6", "0.6 to 1", "1 and over"].map((t, i) => `<span><i class="sq" style="background:var(--h${i + 1})"></i>${t}</span>`).join("");
+  else if (layer === "lost") box.innerHTML = "<span>Ringforts with notes that have no visible trace:</span>" + ["under 10%", "10 to 20%", "20 to 35%", "35 to 50%", "50% and over"].map((t, i) => `<span><i class="sq" style="background:${["#F6E3E2", "#EDB3B5", "#DC7680", "#C2404F", "#8A1427"][i]}"></i>${t}</span>`).join("") + `<span><i class="sq" style="background:var(--panel);border-color:var(--border)"></i>fewer than 10 with notes</span>`;
+  else { const L = layer === "map" ? MP : ST, key = layer === "map" ? "mc" : "st", vis = P.filter(p => showOther ? p.g > 0 : p.g === 0);
+    box.innerHTML = `<span>${showOther ? "Other earthworks" : "Ringforts"}:</span>` + L.map((c, i) => `<span><i style="background:var(${c[0]})"></i>${c[1]} (${fmt(vis.filter(p => p[key] === i).length)})</span>`).join(""); } }
+function restyle() { const z = lmap.getZoom(), r = rad(z); markers.forEach(m => { const p = m.p, on = (layer === "dots" || layer === "map") && (showOther ? p.g > 0 : p.g === 0);
+    if (on && !m._on) { m.addTo(lmap); m._on = true; } else if (!on && m._on) { m.remove(); m._on = false; }
+    if (on) m.setStyle({ fillColor: colOf(p), radius: r, color: css("--bg") }); });
+  if (hexL) { if (layer === "dens" || layer === "lost") { if (!lmap.hasLayer(hexL)) hexL.addTo(lmap); hexL.setStyle(f => ({ fillColor: hexCol(f), fillOpacity: .85, color: css("--bg"), weight: .6 })); } else if (lmap.hasLayer(hexL)) hexL.remove(); }
+  legend(); }
+function tileUrl() { return `https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_${isDark() ? "Dark" : "Light"}_Gray_Base/MapServer/tile/{z}/{y}/{x}`; }
+(() => {
+  if (!window.L) { document.getElementById("lmap").innerHTML = '<p style="padding:16px">The map library did not load.</p>'; document.getElementById("gbmap").innerHTML = ""; return; }
+  lmap = L.map("lmap", { preferCanvas: true, zoomSnap: 0.5, minZoom: 6, maxZoom: 16, scrollWheelZoom: false });
+  lmap.fitBounds([[51.4, -10.6], [55.4, -5.9]], { padding: [4, 4] });
+  tiles = L.tileLayer(tileUrl(), { attribution: 'Tiles &copy; Esri, HERE, Garmin, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, and the GIS user community · Monuments: National Monuments Service (CC BY 4.0)', maxZoom: 16 }).addTo(lmap);
+  const rend = L.canvas({ padding: 0.5, tolerance: 4 });
+  const z = lmap.getZoom();
+  P.forEach(p => { const m = L.circleMarker([p.lat, p.lng], { renderer: rend, radius: rad(z), weight: 0.4, color: css("--bg"), opacity: 0.8, fillColor: colOf(p), fillOpacity: 0.85 });
+    m.p = p; m.bindPopup(() => popup(p), { maxWidth: 320, autoPanPadding: [20, 20] }); p.m = m; markers.push(m); if (p.g === 0) { m.addTo(lmap); m._on = true; } });
+  hexL = L.geoJSON({ type: "FeatureCollection", features: D.hex }, { renderer: rend, onEachFeature: (f, l) => { const pr = f.properties; l.bindPopup(`<div class="pop"><b class="t">${fmt(pr.ringforts)} ringforts</b><dl><dt>Per km²</dt><dd>${pr.per_km2.toFixed(2)}</dd><dt>Land</dt><dd>${pr.land_km2} km²</dd><dt>With notes</dt><dd>${fmt(pr.notes)}</dd><dt>No visible trace</dt><dd>${fmt(pr.gone)}${pr.gone_share != null ? " (" + pc(pr.gone_share) + ")" : ""}</dd><dt>Still on map</dt><dd>${pr.map_kept != null ? pc(pr.map_kept) + " of " + fmt(pr.map_n) : "too few"}</dd></dl></div>`); } });
+  lmap.on("zoomend", restyle);
+  lmap.on("click focus", () => lmap.scrollWheelZoom.enable());
+  lmap.getContainer().addEventListener("mouseleave", () => lmap.scrollWheelZoom.disable());
+  document.querySelectorAll("[data-layer]").forEach(b => b.onclick = () => { layer = b.dataset.layer; document.querySelectorAll("[data-layer]").forEach(x => x.setAttribute("aria-pressed", x === b)); restyle(); });
+  document.querySelectorAll("[data-set]").forEach(b => b.onclick = () => { showOther = b.dataset.set === "other"; document.querySelectorAll("[data-set]").forEach(x => x.setAttribute("aria-pressed", x === b)); restyle(); });
+  redraws.push(() => { tiles.setUrl(tileUrl()); restyle(); });
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => redraws.forEach(f => f()));
+  legend();
+  /* Britain */
+  const gm = L.map("gbmap", { zoomSnap: 0.5, minZoom: 5, maxZoom: 13, scrollWheelZoom: false });
+  gm.fitBounds([[50.0, -6.3], [58.7, 1.8]]);
+  const gt = L.tileLayer(tileUrl(), { attribution: 'Tiles &copy; Esri, HERE, Garmin, &copy; OpenStreetMap contributors, and the GIS user community · Names: OS Open Names (OGL v3)', maxZoom: 16 }).addTo(gm);
+  const GC = { fairy: "--hot", hob: "--blue", puck: "--plum", pixie: "--ochre", boggart: "--moss" };
+  const gl = []; D.gb.forEach(a => { const m = L.circleMarker([a[3], a[4]], { radius: 5.5, weight: 1, color: css("--bg"), fillColor: css(GC[a[0]]), fillOpacity: .9 }).bindPopup(`<div class="pop"><b class="t">${esc(a[1])}</b><div class="c">${esc(a[2])}${a[5] ? " · " + esc(a[5]) : ""}</div></div>`).addTo(gm); m.k = a[0]; gl.push(m); });
+  gm.on("click focus", () => gm.scrollWheelZoom.enable());
+  const cnt = k => D.gb.filter(a => a[0] === k).length;
+  document.getElementById("gblegend").innerHTML = Object.keys(GC).map(k => `<span><i style="background:var(${GC[k]})"></i>${cap(k)} (${cnt(k)})</span>`).join("");
+  redraws.push(() => { gt.setUrl(tileUrl()); gl.forEach(m => m.setStyle({ fillColor: css(GC[m.k]), color: css("--bg") })); });
+})();
+
+/* search by townland */
+(() => {
+  const q = document.getElementById("q"), sug = document.getElementById("sug");
+  const norm = s => s.toLowerCase().replace(/[^a-z0-9áéíóú ]/g, "").replace(/\s+/g, " ").trim();
+  const T = {}; P.forEach(p => { if (!p.tl) return; const k = p.tl + "|" + p.county; (T[k] = T[k] || []).push(p); });
+  const keys = Object.keys(T).map(k => ({ k, key: norm(k.split("|")[0]), n: T[k].length }));
+  let list = [], sel = -1;
+  function go(o) { sug.style.display = "none"; q.setAttribute("aria-expanded", "false"); const ps = T[o.k]; q.value = o.k.split("|")[0]; if (!lmap) return;
+    if (ps.some(p => p.g > 0) && !ps.some(p => p.g === 0)) document.querySelector('[data-set="other"]').click();
+    const p = ps.find(p => showOther ? p.g > 0 : p.g === 0) || ps[0]; lmap.setView([p.lat, p.lng], 14); setTimeout(() => { if (p.m._on) p.m.openPopup(); }, 350); }
+  function render() { sug.innerHTML = list.map((o, i) => `<li role="option" aria-selected="${i === sel}" data-i="${i}">${esc(o.k.split("|")[0])} <span>Co. ${esc(o.k.split("|")[1])}, ${o.n} site${o.n > 1 ? "s" : ""}</span></li>`).join(""); sug.style.display = list.length ? "block" : "none"; q.setAttribute("aria-expanded", list.length > 0); }
+  q.addEventListener("input", () => { const t = norm(q.value); sel = -1; if (t.length < 2) { list = []; render(); return; }
+    list = [...keys.filter(o => o.key.startsWith(t)), ...keys.filter(o => !o.key.startsWith(t) && o.key.includes(t))].slice(0, 10); render(); });
+  q.addEventListener("keydown", e => { if (!list.length) return; if (e.key === "ArrowDown") { sel = Math.min(list.length - 1, sel + 1); render(); e.preventDefault(); } else if (e.key === "ArrowUp") { sel = Math.max(0, sel - 1); render(); e.preventDefault(); } else if (e.key === "Enter") { go(list[Math.max(0, sel)]); e.preventDefault(); } else if (e.key === "Escape") { list = []; render(); } });
+  sug.addEventListener("click", e => { const li = e.target.closest("li"); if (li) go(list[+li.dataset.i]); e.stopPropagation(); });
+  document.addEventListener("click", e => { if (e.target !== q) { sug.style.display = "none"; q.setAttribute("aria-expanded", "false"); } });
+})();
+
+/* generic horizontal bars with optional interval */
+function hbars(box, rows, opt) { resp(box, (W, nar) => {
+  const rowH = opt.rowH || 30, m = { l: nar ? (opt.lnar || 110) : (opt.l || 170), r: 54, t: 4, b: 26 }, H = rows.length * rowH + m.t + m.b;
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": opt.aria }, box);
+  const max = opt.max || Math.max(...rows.map(r => r.hi != null ? r.hi : r.v)), X = v => m.l + Math.max(0, v) / max * (W - m.l - m.r);
+  (opt.ticks || []).forEach(t => { el("line", { x1: X(t), x2: X(t), y1: m.t, y2: H - m.b, stroke: "var(--rule)" }, svg); lbl(svg, X(t), H - 8, opt.tf ? opt.tf(t) : t, "lab m s", "middle"); });
+  rows.forEach((r, i) => { const y = m.t + i * rowH;
+    lbl(svg, m.l - 8, y + rowH / 2 + 4, r.label, nar ? "lab s" : "lab", "end");
+    const b = el("rect", { x: m.l, y: y + 5, width: Math.max(1.5, X(r.v) - m.l), height: rowH - 10, rx: 2, fill: r.col || "var(--moss)" }, svg);
+    if (r.lo != null) { el("line", { x1: X(r.lo), x2: X(r.hi), y1: y + rowH / 2, y2: y + rowH / 2, stroke: "var(--fg)", "stroke-width": 1.4 }, svg); }
+    if (r.tip) hover(b, r.tip);
+    lbl(svg, Math.max(X(r.v), r.hi != null ? X(r.hi) : 0) + 5, y + rowH / 2 + 4, r.vt, "lab s b"); });
+}); }
+
+/* density by county */
+(() => { const rows = R.counties.map(c => ({ label: c.county, v: c.ringforts_per_km2, vt: c.ringforts_per_km2.toFixed(2), col: "var(--moss)", tip: `<b>${esc(c.county)}</b><br>${fmt(c.ringforts)} ringforts (${fmt(c.raths)} raths, ${fmt(c.cashels)} cashels)<br>${fmt(c.area_km2)} km²; ${c.ringforts_per_km2.toFixed(2)} per km²` }));
+  hbars(document.getElementById("dens"), rows, { rowH: 21, l: 120, lnar: 100, aria: "Ringforts per square kilometre by county", ticks: [0, .5, 1], tf: t => t.toFixed(1) }); })();
+
+/* map survival by group */
+(() => { let mode = "raw"; const box = document.getElementById("mapgrp"); const G = ["ringfort", "barrow", "moated site", "mound", "enclosure", "earthwork", "souterrain"];
+  const draw = () => { box.innerHTML = ""; const pr = R.map_pooled_raw, pa = R.map_pooled_adjusted["round earthwork"]; const rows = [{ label: "Ringforts and enclosures", v: mode === "raw" ? pr.share : pa, lo: mode === "raw" ? pr.ci[0] : null, hi: mode === "raw" ? pr.ci[1] : null, vt: pc(mode === "raw" ? pr.share : pa, 1), col: "var(--c4)", tip: `<b>Ringforts and enclosures together</b><br>${fmt(pr.k)} of ${fmt(pr.n)} still drawn (${pc(pr.share, 1)})<br>Adjusted: ${pc(pa, 1)}` }].concat(G.map(g => { const s = R.map_by_group[g], a = R.map_adjusted[g]; const v = mode === "raw" ? s.share : a;
+      return { label: cap(g) + "s", v, lo: mode === "raw" ? s.ci[0] : null, hi: mode === "raw" ? s.ci[1] : null, vt: pc(v, 1), col: g === "ringfort" ? "var(--moss)" : "var(--c5)", tip: `<b>${cap(g)}s</b><br>${fmt(s.k)} of ${fmt(s.n)} drawn c.1840 still drawn (${pc(s.share, 1)})<br>Adjusted: ${pc(a, 1)}` }; }));
+    hbars(box, rows, { rowH: 32, l: 190, lnar: 176, max: 1, ticks: [0, .25, .5, .75, 1], tf: t => pc(t), aria: "Share still drawn on the latest map by kind of earthwork" }); };
+  document.querySelectorAll("[data-adj]").forEach(b => b.onclick = () => { mode = b.dataset.adj; document.querySelectorAll("[data-adj]").forEach(x => x.setAttribute("aria-pressed", x === b)); draw(); });
+  draw(); })();
+
+/* gone by class */
+(() => { const C = [["Ringfort - rath", "Raths"], ["Ringfort - cashel", "Cashels"], ["Ringfort - unclassified", "Ringforts, unclassified"], ["Enclosure", "Enclosures"]];
+  const rows = C.map(([k, n]) => { const s = R.gone_by_class_1840[k]; return { label: n, v: s.share, lo: s.ci[0], hi: s.ci[1], vt: pc(s.share, 1), col: k === "Enclosure" ? "var(--c5)" : k.includes("unclass") ? "var(--ochre)" : "var(--gone)", tip: `<b>${n}</b><br>${fmt(s.k)} of ${fmt(s.n)} with notes have no visible trace` }; });
+  const s = R.gone_by_group_1840.souterrain; rows.push({ label: "Souterrains", v: s.share, lo: s.ci[0], hi: s.ci[1], vt: pc(s.share, 1), col: "var(--c5)", tip: `<b>Souterrains</b> (underground passages)<br>${fmt(s.k)} of ${fmt(s.n)}` });
+  hbars(document.getElementById("gonecls"), rows, { rowH: 32, l: 180, lnar: 150, max: .7, ticks: [0, .2, .4, .6], tf: t => pc(t), aria: "Share with no visible trace by class" }); })();
+
+/* elevation */
+resp(document.getElementById("elev"), (W, nar) => { const B = R.elev_bands, H = nar ? 300 : 340, m = { l: 44, r: nar ? 16 : 110, t: 14, b: 52 };
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Share with no visible trace by height, ringforts and enclosures" }, document.getElementById("elev"));
+  const X = i => m.l + (i + .5) / B.length * (W - m.l - m.r), Y = v => H - m.b - v / .6 * (H - m.t - m.b);
+  [0, .2, .4, .6].forEach(t => { el("line", { x1: m.l, x2: W - m.r, y1: Y(t), y2: Y(t), stroke: "var(--rule)" }, svg); lbl(svg, m.l - 6, Y(t) + 4, pc(t), "lab m s", "end"); });
+  B.forEach((b, i) => { const t = lbl(svg, X(i), H - m.b + 18, nar ? ["under 50", "50+", "100+", "150+", "200+"][i] : b.band, "lab m s", "middle"); });
+  lbl(svg, (m.l + W - m.r) / 2, H - 8, "Height above sea level", "lab m s", "middle");
+  [["gone_ringfort", "var(--gone)", "Ringforts"], ["gone_enclosure", "var(--c5)", "Enclosures"]].forEach(([k, c, n]) => {
+    el("path", { d: B.map((b, i) => (i ? "L" : "M") + X(i) + " " + Y(b[k].share)).join(""), fill: "none", stroke: c, "stroke-width": 3 }, svg);
+    B.forEach((b, i) => { el("line", { x1: X(i), x2: X(i), y1: Y(b[k].ci[0]), y2: Y(b[k].ci[1]), stroke: c, "stroke-width": 1.2, opacity: .7 }, svg);
+      const d = el("circle", { cx: X(i), cy: Y(b[k].share), r: 5.5, fill: c, stroke: "var(--bg)", "stroke-width": 1.5 }, svg); hover(d, `<b>${n}, ${b.band}</b><br>${fmt(b[k].k)} of ${fmt(b[k].n)} have no visible trace (${pc(b[k].share, 1)})`); });
+    const lb = B[B.length - 1][k].share; if (!nar) lbl(svg, X(B.length - 1) + 12, Y(lb) + 4, n, "lab b", "start"); });
+  if (nar) { lbl(svg, m.l + 4, m.t + 2, "red: ringforts · grey: enclosures", "lab s m", "start"); }
+});
+
+/* quotes */
+document.getElementById("quotes").innerHTML = R.quotes.map(q => `<figure class="quote"><p>“${esc(q.text)}”</p><footer>${esc(q.cls)} · ${esc(q.townland)}, Co. ${esc(q.county)} · ${esc(q.id)}</footer></figure>`).join("");
+
+/* names */
+(() => { let nm = "town"; const box = document.getElementById("names"), Hh = document.getElementById("nmH"), Ss = document.getElementById("nmS");
+  const draw = () => { box.innerHTML = "";
+    let rows;
+    if (nm === "town") { Hh.textContent = "Ringforts with no visible trace, by townland name"; Ss.textContent = "All ringforts with notes online, grouped by the start of their townland's name.";
+      rows = [["lis", "Lis, Lios"], ["rath", "Rath, Raheen"], ["caher", "Caher, Cahir"], ["other", "Other names"]].map(([k, n]) => { const s = R.townland[k].gone_all; return { label: n, v: s.share, lo: s.ci[0], hi: s.ci[1], vt: pc(s.share, 1), col: k === "other" ? "var(--c5)" : "var(--gone)", tip: `<b>${n}</b><br>${fmt(R.townland[k].n)} ringforts; ${fmt(s.k)} of ${fmt(s.n)} with notes have no visible trace` }; }); }
+    else { Hh.textContent = "No visible trace, by whether the 1840 map named the site"; Ss.textContent = "Ringforts and enclosures drawn on the first edition. Raw shares, and ringforts alone adjusted for county, height and slope.";
+      const L = R.labelled; rows = [{ label: "Named, raw", v: L.named.gone.share, lo: L.named.gone.ci[0], hi: L.named.gone.ci[1], vt: pc(L.named.gone.share, 1), col: "var(--gone)", tip: `${fmt(L.named.gone.k)} of ${fmt(L.named.gone.n)}` },
+        { label: "Not named, raw", v: L.unnamed.gone.share, lo: L.unnamed.gone.ci[0], hi: L.unnamed.gone.ci[1], vt: pc(L.unnamed.gone.share, 1), col: "var(--c5)", tip: `${fmt(L.unnamed.gone.k)} of ${fmt(L.unnamed.gone.n)}` },
+        { label: "Named, adjusted", v: R.labelled_gone_adjusted_ringforts.named, vt: pc(R.labelled_gone_adjusted_ringforts.named, 1), col: "var(--gone)" },
+        { label: "Not named, adjusted", v: R.labelled_gone_adjusted_ringforts.unnamed, vt: pc(R.labelled_gone_adjusted_ringforts.unnamed, 1), col: "var(--c5)" }]; }
+    hbars(box, rows, { rowH: 32, l: 150, lnar: 130, max: .3, ticks: [0, .1, .2, .3], tf: t => pc(t), aria: Hh.textContent }); };
+  document.querySelectorAll("[data-nm]").forEach(b => b.onclick = () => { nm = b.dataset.nm; document.querySelectorAll("[data-nm]").forEach(x => x.setAttribute("aria-pressed", x === b)); draw(); });
+  draw(); })();
+
+/* county dumbbell */
+(() => { let cm = "gone"; const box = document.getElementById("cty"), Hh = document.getElementById("ctyH"), Ss = document.getElementById("ctyS");
+  function draw() { box.innerHTML = ""; const k = cm === "gone" ? "gap_gone_pp" : "gap_map_pp";
+    const a = cm === "gone" ? "ringfort_gone_1840" : "ringfort_map_kept", b = cm === "gone" ? "enclosure_gone_1840" : "other_map_kept";
+    const na = cm === "gone" ? "n_ringfort_gone_1840" : "n_ringfort_map", nb = cm === "gone" ? "n_enclosure_gone_1840" : "n_other_map";
+    Hh.textContent = cm === "gone" ? "No visible trace now: ringforts against enclosures" : "Still on the latest map: ringforts against other earthworks";
+    Ss.textContent = cm === "gone" ? "Sites drawn c.1840 with notes. Counties with at least 50 ringforts and 30 enclosures." : "Sites drawn c.1840. Other earthworks: enclosures, barrows, moated sites, mounds and earthworks. Counties with at least 50 ringforts and 30 others.";
+    const rs = R.counties.filter(c => c[k] != null).sort((x, y) => x[a] - y[a]);
+    const W = Math.max(280, box.clientWidth), nar = W < 560, rowH = 24, m = { l: nar ? 96 : 120, r: 20, t: 22, b: 26 }, H = rs.length * rowH + m.t + m.b;
+    const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": Hh.textContent }, box); const X = v => m.l + v * (W - m.l - m.r);
+    [0, .25, .5, .75, 1].forEach(t => { el("line", { x1: X(t), x2: X(t), y1: m.t, y2: H - m.b, stroke: "var(--rule)" }, svg); lbl(svg, X(t), H - 8, pc(t), "lab m s", "middle"); });
+    lbl(svg, m.l, 12, "● ringforts", "lab s b", "start").setAttribute("style", `fill:${css(cm === "gone" ? "--gone" : "--moss")}`);
+    lbl(svg, m.l + 100, 12, "● " + (cm === "gone" ? "enclosures" : "other earthworks"), "lab s b", "start").setAttribute("style", `fill:${css("--c5")}`);
+    rs.forEach((c, i) => { const y = m.t + i * rowH + rowH / 2; lbl(svg, m.l - 8, y + 4, c.county, nar ? "lab s" : "lab", "end");
+      el("line", { x1: X(c[a]), x2: X(c[b]), y1: y, y2: y, stroke: "var(--border)", "stroke-width": 3 }, svg);
+      const d1 = el("circle", { cx: X(c[b]), cy: y, r: 6, fill: "var(--c5)" }, svg), d2 = el("circle", { cx: X(c[a]), cy: y, r: 6, fill: cm === "gone" ? "var(--gone)" : "var(--moss)" }, svg);
+      const t = `<b>${esc(c.county)}</b><br>Ringforts: ${pc(c[a], 1)} of ${fmt(c[na])}<br>${cm === "gone" ? "Enclosures" : "Others"}: ${pc(c[b], 1)} of ${fmt(c[nb])}`; hover(d1, t); hover(d2, t); });
+  }
+  document.querySelectorAll("[data-cm]").forEach(b => b.onclick = () => { cm = b.dataset.cm; document.querySelectorAll("[data-cm]").forEach(x => x.setAttribute("aria-pressed", x === b)); draw(); });
+  new ResizeObserver(draw).observe(box); draw(); redraws.push(draw); })();
+</script>
+</body>
+</html>
