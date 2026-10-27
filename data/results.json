@@ -1,0 +1,1766 @@
+{
+ "first_dep_from_notes_ignored": 3080,
+ "smr_total": 151308,
+ "smr_classes": 470,
+ "n_group": {
+  "ringfort": 31431,
+  "enclosure": 16621,
+  "fulacht fia": 6637,
+  "souterrain": 4853,
+  "barrow": 3901,
+  "earthwork": 2009,
+  "moated site": 1329,
+  "mound": 1219
+ },
+ "n_class": {
+  "Ringfort - rath": 26000,
+  "Ringfort - cashel": 3551,
+  "Ringfort - unclassified": 1880
+ },
+ "ringfort_share_of_smr": 0.2077,
+ "earthworks_in_scope": 68000,
+ "notes": {
+  "enclosure": {
+   "n": 16621,
+   "usable": 14262,
+   "placeholder": 2359,
+   "placeholder_share": 0.1419
+  },
+  "ringfort": {
+   "n": 31431,
+   "usable": 28410,
+   "placeholder": 3021,
+   "placeholder_share": 0.0961
+  },
+  "souterrain": {
+   "n": 4853,
+   "usable": 4352,
+   "placeholder": 501,
+   "placeholder_share": 0.1032
+  }
+ },
+ "notes_none_for": [
+  "barrow",
+  "moated site",
+  "earthwork",
+  "mound",
+  "fulacht fia"
+ ],
+ "validation": {
+  "n": 60,
+  "agree": 54,
+  "share": 0.9,
+  "false_gone": 4,
+  "missed_gone": 2
+ },
+ "state_area_km2": 70286,
+ "ringforts_per_km2": 0.447,
+ "km2_per_ringfort": 2.24,
+ "map_by_group": {
+  "ringfort": {
+   "n": 11555,
+   "k": 10241,
+   "share": 0.8863,
+   "ci": [
+    0.8804,
+    0.8919
+   ]
+  },
+  "barrow": {
+   "n": 559,
+   "k": 492,
+   "share": 0.8801,
+   "ci": [
+    0.8506,
+    0.9045
+   ]
+  },
+  "moated site": {
+   "n": 526,
+   "k": 424,
+   "share": 0.8061,
+   "ci": [
+    0.7701,
+    0.8376
+   ]
+  },
+  "mound": {
+   "n": 149,
+   "k": 115,
+   "share": 0.7718,
+   "ci": [
+    0.6981,
+    0.8319
+   ]
+  },
+  "enclosure": {
+   "n": 3303,
+   "k": 2315,
+   "share": 0.7009,
+   "ci": [
+    0.685,
+    0.7163
+   ]
+  },
+  "earthwork": {
+   "n": 423,
+   "k": 260,
+   "share": 0.6147,
+   "ci": [
+    0.5674,
+    0.6598
+   ]
+  },
+  "souterrain": {
+   "n": 312,
+   "k": 209,
+   "share": 0.6699,
+   "ci": [
+    0.6159,
+    0.7197
+   ]
+  },
+  "fulacht fia": {
+   "n": 12,
+   "k": 7,
+   "share": 0.5833,
+   "ci": [
+    0.3195,
+    0.8067
+   ]
+  }
+ },
+ "map_by_class": {
+  "Ringfort - rath": {
+   "n": 9573,
+   "k": 8774,
+   "share": 0.9165,
+   "ci": [
+    0.9108,
+    0.9219
+   ]
+  },
+  "Ringfort - cashel": {
+   "n": 1214,
+   "k": 1087,
+   "share": 0.8954,
+   "ci": [
+    0.8769,
+    0.9114
+   ]
+  },
+  "Ringfort - unclassified": {
+   "n": 768,
+   "k": 380,
+   "share": 0.4948,
+   "ci": [
+    0.4595,
+    0.5301
+   ]
+  }
+ },
+ "first_dep_by_group": {
+  "barrow": {
+   "drawn": 572,
+   "not": 2366,
+   "unknown": 963,
+   "from_notes": 0
+  },
+  "earthwork": {
+   "drawn": 423,
+   "not": 995,
+   "unknown": 591,
+   "from_notes": 0
+  },
+  "enclosure": {
+   "drawn": 3313,
+   "not": 5857,
+   "unknown": 7451,
+   "from_notes": 1181
+  },
+  "fulacht fia": {
+   "drawn": 12,
+   "not": 1663,
+   "unknown": 4962,
+   "from_notes": 0
+  },
+  "moated site": {
+   "drawn": 527,
+   "not": 284,
+   "unknown": 518,
+   "from_notes": 0
+  },
+  "mound": {
+   "drawn": 150,
+   "not": 486,
+   "unknown": 583,
+   "from_notes": 0
+  },
+  "ringfort": {
+   "drawn": 11565,
+   "not": 3689,
+   "unknown": 16177,
+   "from_notes": 1750
+  },
+  "souterrain": {
+   "drawn": 314,
+   "not": 1496,
+   "unknown": 3043,
+   "from_notes": 149
+  }
+ },
+ "latest_year": {
+  "n_with_year": 1474,
+  "n_map": 16839,
+  "median": 1921,
+  "q25": 1916,
+  "q75": 1927
+ },
+ "gone_by_group_all": {
+  "ringfort": {
+   "n": 28410,
+   "k": 5921,
+   "share": 0.2084,
+   "ci": [
+    0.2037,
+    0.2132
+   ]
+  },
+  "enclosure": {
+   "n": 14262,
+   "k": 6097,
+   "share": 0.4275,
+   "ci": [
+    0.4194,
+    0.4356
+   ]
+  },
+  "souterrain": {
+   "n": 4352,
+   "k": 1000,
+   "share": 0.2298,
+   "ci": [
+    0.2175,
+    0.2425
+   ]
+  }
+ },
+ "gone_by_group_1840": {
+  "ringfort": {
+   "n": 10973,
+   "k": 1789,
+   "share": 0.163,
+   "ci": [
+    0.1562,
+    0.1701
+   ]
+  },
+  "enclosure": {
+   "n": 2763,
+   "k": 1171,
+   "share": 0.4238,
+   "ci": [
+    0.4055,
+    0.4423
+   ]
+  },
+  "souterrain": {
+   "n": 263,
+   "k": 68,
+   "share": 0.2586,
+   "ci": [
+    0.2094,
+    0.3147
+   ]
+  }
+ },
+ "gone_by_class_1840": {
+  "Ringfort - rath": {
+   "n": 9126,
+   "k": 1251,
+   "share": 0.1371,
+   "ci": [
+    0.1302,
+    0.1443
+   ]
+  },
+  "Ringfort - cashel": {
+   "n": 1099,
+   "k": 149,
+   "share": 0.1356,
+   "ci": [
+    0.1166,
+    0.1571
+   ]
+  },
+  "Ringfort - unclassified": {
+   "n": 748,
+   "k": 389,
+   "share": 0.5201,
+   "ci": [
+    0.4842,
+    0.5557
+   ]
+  },
+  "Enclosure": {
+   "n": 2763,
+   "k": 1171,
+   "share": 0.4238,
+   "ci": [
+    0.4055,
+    0.4423
+   ]
+  }
+ },
+ "damaged_or_gone_1840": {
+  "ringfort": {
+   "n": 10973,
+   "k": 4139,
+   "share": 0.3772,
+   "ci": [
+    0.3682,
+    0.3863
+   ]
+  },
+  "enclosure": {
+   "n": 2763,
+   "k": 1661,
+   "share": 0.6012,
+   "ci": [
+    0.5828,
+    0.6193
+   ]
+  }
+ },
+ "gone_ringfort_notdrawn": {
+  "n": 3517,
+  "k": 851,
+  "share": 0.242,
+  "ci": [
+   0.2281,
+   0.2564
+  ]
+ },
+ "gone_enclosure_notdrawn": {
+  "n": 5413,
+  "k": 2307,
+  "share": 0.4262,
+  "ci": [
+   0.4131,
+   0.4394
+  ]
+ },
+ "ringfort_status_counts": {
+  "visible": 17210,
+  "gone": 5921,
+  "damaged": 5279,
+  "none": 3021
+ },
+ "map_adjusted": {
+  "ringfort": 0.8869,
+  "barrow": 0.8625,
+  "moated site": 0.8676,
+  "mound": 0.7884,
+  "enclosure": 0.6886,
+  "earthwork": 0.5417,
+  "souterrain": 0.6948
+ },
+ "map_model_n": 16753,
+ "map_or_vs_ringfort": {
+  "ringfort": 1.271,
+  "moated site": 1.048,
+  "mound": 0.567,
+  "enclosure": 0.319,
+  "earthwork": 0.16,
+  "souterrain": 0.33
+ },
+ "map_or_base": "barrow",
+ "map_pooled_adjusted": {
+  "round earthwork": 0.845,
+  "barrow": 0.863,
+  "moated site": 0.8659,
+  "mound": 0.8039,
+  "earthwork": 0.5407
+ },
+ "map_pooled_raw": {
+  "n": 14858,
+  "k": 12556,
+  "share": 0.8451,
+  "ci": [
+   0.8392,
+   0.8508
+  ]
+ },
+ "premium_pooled_vs_barrow_pp": -1.8,
+ "premium_pooled_vs_moated_pp": -2.1,
+ "gone_pooled_1840": {
+  "n": 13736,
+  "k": 2960,
+  "share": 0.2155,
+  "ci": [
+   0.2087,
+   0.2224
+  ]
+ },
+ "gone_adjusted_1840": {
+  "ringfort": 0.1639,
+  "enclosure": 0.4024
+ },
+ "gone_model_n": 13666,
+ "gone_or_ringfort_vs_enclosure": 0.26,
+ "gone_or_per100m": 0.752,
+ "gone_or_per_degree": 0.985,
+ "elev_bands": [
+  {
+   "band": "under 50 m",
+   "n_ringforts": 8395,
+   "gone_ringfort": {
+    "n": 2346,
+    "k": 454,
+    "share": 0.1935,
+    "ci": [
+     0.178,
+     0.21
+    ]
+   },
+   "gone_enclosure": {
+    "n": 672,
+    "k": 335,
+    "share": 0.4985,
+    "ci": [
+     0.4608,
+     0.5362
+    ]
+   },
+   "map_ringfort": {
+    "n": 2729,
+    "k": 2382,
+    "share": 0.8728,
+    "ci": [
+     0.8598,
+     0.8848
+    ]
+   },
+   "map_other": {
+    "n": 1326,
+    "k": 907,
+    "share": 0.684,
+    "ci": [
+     0.6585,
+     0.7085
+    ]
+   }
+  },
+  {
+   "band": "50 to 100 m",
+   "n_ringforts": 13379,
+   "gone_ringfort": {
+    "n": 5368,
+    "k": 884,
+    "share": 0.1647,
+    "ci": [
+     0.155,
+     0.1748
+    ]
+   },
+   "gone_enclosure": {
+    "n": 1158,
+    "k": 477,
+    "share": 0.4119,
+    "ci": [
+     0.3839,
+     0.4405
+    ]
+   },
+   "map_ringfort": {
+    "n": 5518,
+    "k": 4903,
+    "share": 0.8885,
+    "ci": [
+     0.88,
+     0.8966
+    ]
+   },
+   "map_other": {
+    "n": 2070,
+    "k": 1514,
+    "share": 0.7314,
+    "ci": [
+     0.7119,
+     0.7501
+    ]
+   }
+  },
+  {
+   "band": "100 to 150 m",
+   "n_ringforts": 6745,
+   "gone_ringfort": {
+    "n": 2547,
+    "k": 379,
+    "share": 0.1488,
+    "ci": [
+     0.1355,
+     0.1632
+    ]
+   },
+   "gone_enclosure": {
+    "n": 570,
+    "k": 232,
+    "share": 0.407,
+    "ci": [
+     0.3674,
+     0.4478
+    ]
+   },
+   "map_ringfort": {
+    "n": 2585,
+    "k": 2313,
+    "share": 0.8948,
+    "ci": [
+     0.8824,
+     0.906
+    ]
+   },
+   "map_other": {
+    "n": 1034,
+    "k": 794,
+    "share": 0.7679,
+    "ci": [
+     0.7412,
+     0.7926
+    ]
+   }
+  },
+  {
+   "band": "150 to 200 m",
+   "n_ringforts": 2158,
+   "gone_ringfort": {
+    "n": 546,
+    "k": 59,
+    "share": 0.1081,
+    "ci": [
+     0.0847,
+     0.1369
+    ]
+   },
+   "gone_enclosure": {
+    "n": 245,
+    "k": 85,
+    "share": 0.3469,
+    "ci": [
+     0.2901,
+     0.4085
+    ]
+   },
+   "map_ringfort": {
+    "n": 555,
+    "k": 492,
+    "share": 0.8865,
+    "ci": [
+     0.8574,
+     0.9103
+    ]
+   },
+   "map_other": {
+    "n": 357,
+    "k": 266,
+    "share": 0.7451,
+    "ci": [
+     0.6974,
+     0.7875
+    ]
+   }
+  },
+  {
+   "band": "200 m and over",
+   "n_ringforts": 754,
+   "gone_ringfort": {
+    "n": 166,
+    "k": 13,
+    "share": 0.0783,
+    "ci": [
+     0.0463,
+     0.1294
+    ]
+   },
+   "gone_enclosure": {
+    "n": 118,
+    "k": 42,
+    "share": 0.3559,
+    "ci": [
+     0.2753,
+     0.4456
+    ]
+   },
+   "map_ringfort": {
+    "n": 168,
+    "k": 151,
+    "share": 0.8988,
+    "ci": [
+     0.8439,
+     0.9359
+    ]
+   },
+   "map_other": {
+    "n": 173,
+    "k": 125,
+    "share": 0.7225,
+    "ci": [
+     0.6515,
+     0.7839
+    ]
+   }
+  }
+ ],
+ "ringfort_elev_median": 76.3,
+ "enclosure_elev_median": 74.6,
+ "slope_bands": [
+  {
+   "band": "under 1 degree",
+   "gone_ringfort": {
+    "n": 4343,
+    "k": 798,
+    "share": 0.1837,
+    "ci": [
+     0.1725,
+     0.1955
+    ]
+   },
+   "gone_enclosure": {
+    "n": 1106,
+    "k": 511,
+    "share": 0.462,
+    "ci": [
+     0.4328,
+     0.4915
+    ]
+   }
+  },
+  {
+   "band": "1 to 2 degrees",
+   "gone_ringfort": {
+    "n": 3582,
+    "k": 558,
+    "share": 0.1558,
+    "ci": [
+     0.1443,
+     0.168
+    ]
+   },
+   "gone_enclosure": {
+    "n": 805,
+    "k": 365,
+    "share": 0.4534,
+    "ci": [
+     0.4193,
+     0.4879
+    ]
+   }
+  },
+  {
+   "band": "2 to 4 degrees",
+   "gone_ringfort": {
+    "n": 2266,
+    "k": 319,
+    "share": 0.1408,
+    "ci": [
+     0.1271,
+     0.1557
+    ]
+   },
+   "gone_enclosure": {
+    "n": 571,
+    "k": 214,
+    "share": 0.3748,
+    "ci": [
+     0.336,
+     0.4152
+    ]
+   }
+  },
+  {
+   "band": "4 degrees and over",
+   "gone_ringfort": {
+    "n": 782,
+    "k": 114,
+    "share": 0.1458,
+    "ci": [
+     0.1228,
+     0.1722
+    ]
+   },
+   "gone_enclosure": {
+    "n": 281,
+    "k": 81,
+    "share": 0.2883,
+    "ci": [
+     0.2384,
+     0.3438
+    ]
+   }
+  }
+ ],
+ "labelled": {
+  "unnamed": {
+   "gone": {
+    "n": 10604,
+    "k": 2564,
+    "share": 0.2418,
+    "ci": [
+     0.2337,
+     0.25
+    ]
+   },
+   "map": {
+    "n": 11630,
+    "k": 9666,
+    "share": 0.8311,
+    "ci": [
+     0.8242,
+     0.8378
+    ]
+   },
+   "n": 11648,
+   "ringfort_share": 0.7403
+  },
+  "named": {
+   "gone": {
+    "n": 3132,
+    "k": 396,
+    "share": 0.1264,
+    "ci": [
+     0.1153,
+     0.1385
+    ]
+   },
+   "map": {
+    "n": 3228,
+    "k": 2890,
+    "share": 0.8953,
+    "ci": [
+     0.8843,
+     0.9054
+    ]
+   },
+   "n": 3230,
+   "ringfort_share": 0.9108
+  }
+ },
+ "labelled_gone_adjusted": {
+  "named": 0.1786,
+  "unnamed": 0.2213
+ },
+ "labelled_gone_adjusted_ringforts": {
+  "named": 0.1632,
+  "unnamed": 0.1617
+ },
+ "labelled_gone_ringforts_raw": {
+  "named": {
+   "n": 2885,
+   "k": 340,
+   "share": 0.1179,
+   "ci": [
+    0.1066,
+    0.1301
+   ]
+  },
+  "unnamed": {
+   "n": 8088,
+   "k": 1449,
+   "share": 0.1792,
+   "ci": [
+    0.1709,
+    0.1877
+   ]
+  }
+ },
+ "named_examples": {
+  "Fort": 1134,
+  "fort": 1059,
+  "Forts": 16,
+  "Caher": 14,
+  "forts": 13,
+  "Lisheen": 7,
+  "Cahermore": 6,
+  "Cashel": 6
+ },
+ "townland": {
+  "caher": {
+   "n": 546,
+   "gone_all": {
+    "n": 455,
+    "k": 85,
+    "share": 0.1868,
+    "ci": [
+     0.1537,
+     0.2252
+    ]
+   },
+   "gone_1840": {
+    "n": 200,
+    "k": 34,
+    "share": 0.17,
+    "ci": [
+     0.1243,
+     0.2282
+    ]
+   },
+   "map": {
+    "n": 211,
+    "k": 184,
+    "share": 0.872,
+    "ci": [
+     0.8202,
+     0.9105
+    ]
+   }
+  },
+  "lis": {
+   "n": 1423,
+   "gone_all": {
+    "n": 1247,
+    "k": 223,
+    "share": 0.1788,
+    "ci": [
+     0.1586,
+     0.2011
+    ]
+   },
+   "gone_1840": {
+    "n": 492,
+    "k": 63,
+    "share": 0.128,
+    "ci": [
+     0.1014,
+     0.1605
+    ]
+   },
+   "map": {
+    "n": 530,
+    "k": 486,
+    "share": 0.917,
+    "ci": [
+     0.8904,
+     0.9376
+    ]
+   }
+  },
+  "other": {
+   "n": 28643,
+   "gone_all": {
+    "n": 25965,
+    "k": 5456,
+    "share": 0.2101,
+    "ci": [
+     0.2052,
+     0.2151
+    ]
+   },
+   "gone_1840": {
+    "n": 9941,
+    "k": 1630,
+    "share": 0.164,
+    "ci": [
+     0.1568,
+     0.1714
+    ]
+   },
+   "map": {
+    "n": 10451,
+    "k": 9247,
+    "share": 0.8848,
+    "ci": [
+     0.8785,
+     0.8908
+    ]
+   }
+  },
+  "rath": {
+   "n": 819,
+   "gone_all": {
+    "n": 743,
+    "k": 157,
+    "share": 0.2113,
+    "ci": [
+     0.1835,
+     0.2421
+    ]
+   },
+   "gone_1840": {
+    "n": 340,
+    "k": 62,
+    "share": 0.1824,
+    "ci": [
+     0.1449,
+     0.2269
+    ]
+   },
+   "map": {
+    "n": 363,
+    "k": 324,
+    "share": 0.8926,
+    "ci": [
+     0.8565,
+     0.9204
+    ]
+   }
+  }
+ },
+ "townland_gone_adjusted": {
+  "fortname": 0.1925,
+  "other": 0.2099
+ },
+ "townland_fortname_n": 2445,
+ "townland_fortname_gone_raw": {
+  "n": 2445,
+  "k": 465,
+  "share": 0.1902,
+  "ci": [
+   0.1751,
+   0.2062
+  ]
+ },
+ "townland_other_gone_raw": {
+  "n": 25965,
+  "k": 5456,
+  "share": 0.2101,
+  "ci": [
+   0.2052,
+   0.2151
+  ]
+ },
+ "townlands_distinct_in_scope": 25628,
+ "townlands_fortname_distinct": 1799,
+ "folk": {
+  "n": 52,
+  "by_group": {
+   "ringfort": 28,
+   "enclosure": 18,
+   "souterrain": 6
+  },
+  "notes_searched": 47024,
+  "ringfort_n": 28,
+  "ringfort_notes": 28410,
+  "gone": {
+   "n": 52,
+   "k": 16,
+   "share": 0.3077,
+   "ci": [
+    0.1991,
+    0.4427
+   ]
+  },
+  "gone_ringfort": {
+   "n": 28,
+   "k": 10,
+   "share": 0.3571,
+   "ci": [
+    0.2071,
+    0.5417
+   ]
+  },
+  "per_10000_ringfort_notes": 9.9
+ },
+ "quotes": [
+  {
+   "id": "TN00680",
+   "text": "The site was levelled c. 50 years ago but because of superstition the area where the 'fort' stood has been left fallow.",
+   "county": "Tipperary North",
+   "townland": "Monsea",
+   "cls": "Ringfort - rath",
+   "status": "gone"
+  },
+  {
+   "id": "OF01136",
+   "text": "The local landowner will not touch the overgrowth on this ridge because he believes that it is a fairy fort.",
+   "county": "Offaly",
+   "townland": "Rathrobin",
+   "cls": "Enclosure",
+   "status": "visible"
+  },
+  {
+   "id": "CO05478",
+   "text": "No visible surface trace. According to local information, an old man living in the area pointed to a clump of furze here and said that bad luck would come to any one who ploughed it.",
+   "county": "Cork",
+   "townland": "Kilbarry (Condons And Clongibbon By.)",
+   "cls": "Ringfort - rath",
+   "status": "gone"
+  },
+  {
+   "id": "GA02126",
+   "text": "No visible surface trace of either survives. According to local tradition, it is unlucky to till the field.",
+   "county": "Galway",
+   "townland": "Tirur",
+   "cls": "Ringfort - unclassified",
+   "status": "gone"
+  },
+  {
+   "id": "MA05990",
+   "text": "According to local tradition, this is the site of ‘fairy trees’ (hawthorn) and for this reason was never disturbed.",
+   "county": "Mayo",
+   "townland": "Bunnadober (Costello By.)",
+   "cls": "Enclosure",
+   "status": "gone"
+  },
+  {
+   "id": "OF05141",
+   "text": "According to local information this was the site of a 'fairy fort' which was bulldozed in the 1960s.",
+   "county": "Offaly",
+   "townland": "Gorteen (Kilcoursey By.)",
+   "cls": "Enclosure",
+   "status": "gone"
+  },
+  {
+   "id": "WI03453",
+   "text": "It is said that a man went to plough it and as soon as he put his hands on the plough, The horse & Plough were took out of his hands and they never came back",
+   "county": "Wicklow",
+   "townland": "Calary Upper",
+   "cls": "Ringfort - rath",
+   "status": "visible"
+  },
+  {
+   "id": "KK00340",
+   "text": "the place was dug up several years ago by money dreamers and the stones carried away by some wicked man who had not the fear of Oisinn or the fairies before his eyes, but he died since, tho' not very old!",
+   "county": "Kilkenny",
+   "townland": "Rathosheen",
+   "cls": "Ringfort - rath",
+   "status": "damaged"
+  },
+  {
+   "id": "TS02047",
+   "text": "The monument has been incorporated into the 15th green which is known as the ‘Fairy hole’.",
+   "county": "Tipperary South",
+   "townland": "Rathanny",
+   "cls": "Enclosure",
+   "status": "visible"
+  }
+ ],
+ "counties": [
+  {
+   "county": "Sligo",
+   "area_km2": 1838,
+   "ringforts": 2295,
+   "raths": 1815,
+   "cashels": 400,
+   "ringforts_per_km2": 1.249,
+   "enclosures": 678,
+   "ringfort_notes": 2185,
+   "ringfort_placeholder_share": 0.0479,
+   "ringfort_gone_all": 0.1025,
+   "ringfort_gone_1840": 0.1563,
+   "n_ringfort_gone_1840": 467,
+   "enclosure_gone_1840": 0.3778,
+   "n_enclosure_gone_1840": 90,
+   "ringfort_map_kept": 0.8217,
+   "n_ringfort_map": 471,
+   "other_map_kept": 0.6567,
+   "n_other_map": 134,
+   "median_elev_m": 69.0,
+   "gap_gone_pp": 22.2,
+   "gap_map_pp": 16.5
+  },
+  {
+   "county": "Roscommon",
+   "area_km2": 2548,
+   "ringforts": 2423,
+   "raths": 2126,
+   "cashels": 289,
+   "ringforts_per_km2": 0.951,
+   "enclosures": 292,
+   "ringfort_notes": 2423,
+   "ringfort_placeholder_share": 0.0,
+   "ringfort_gone_all": 0.1073,
+   "ringfort_gone_1840": 0.112,
+   "n_ringfort_gone_1840": 1669,
+   "enclosure_gone_1840": 0.1786,
+   "n_enclosure_gone_1840": 56,
+   "ringfort_map_kept": 0.9215,
+   "n_ringfort_map": 1669,
+   "other_map_kept": 0.7349,
+   "n_other_map": 249,
+   "median_elev_m": 71.6,
+   "gap_gone_pp": 6.7,
+   "gap_map_pp": 18.7
+  },
+  {
+   "county": "Westmeath",
+   "area_km2": 1840,
+   "ringforts": 1563,
+   "raths": 1374,
+   "cashels": 8,
+   "ringforts_per_km2": 0.849,
+   "enclosures": 147,
+   "ringfort_notes": 1562,
+   "ringfort_placeholder_share": 0.0006,
+   "ringfort_gone_all": 0.2362,
+   "ringfort_gone_1840": 0.2377,
+   "n_ringfort_gone_1840": 1397,
+   "enclosure_gone_1840": 0.4737,
+   "n_enclosure_gone_1840": 57,
+   "ringfort_map_kept": 0.9019,
+   "n_ringfort_map": 1397,
+   "other_map_kept": 0.7854,
+   "n_other_map": 233,
+   "median_elev_m": 97.4,
+   "gap_gone_pp": 23.6,
+   "gap_map_pp": 11.7
+  },
+  {
+   "county": "Limerick",
+   "area_km2": 2756,
+   "ringforts": 2203,
+   "raths": 2040,
+   "cashels": 117,
+   "ringforts_per_km2": 0.799,
+   "enclosures": 1119,
+   "ringfort_notes": 2203,
+   "ringfort_placeholder_share": 0.0,
+   "ringfort_gone_all": 0.2356,
+   "ringfort_gone_1840": 0.1966,
+   "n_ringfort_gone_1840": 468,
+   "enclosure_gone_1840": 0.3768,
+   "n_enclosure_gone_1840": 138,
+   "ringfort_map_kept": 0.9274,
+   "n_ringfort_map": 468,
+   "other_map_kept": 0.8912,
+   "n_other_map": 340,
+   "median_elev_m": 57.4,
+   "gap_gone_pp": 18.0,
+   "gap_map_pp": 3.6
+  },
+  {
+   "county": "Longford",
+   "area_km2": 1091,
+   "ringforts": 828,
+   "raths": 812,
+   "cashels": 12,
+   "ringforts_per_km2": 0.759,
+   "enclosures": 114,
+   "ringfort_notes": 828,
+   "ringfort_placeholder_share": 0.0,
+   "ringfort_gone_all": 0.3237,
+   "ringfort_gone_1840": 0.3607,
+   "n_ringfort_gone_1840": 377,
+   "enclosure_gone_1840": 0.4043,
+   "n_enclosure_gone_1840": 47,
+   "ringfort_map_kept": 0.8355,
+   "n_ringfort_map": 377,
+   "other_map_kept": 0.8448,
+   "n_other_map": 58,
+   "median_elev_m": 79.0,
+   "gap_gone_pp": 4.4,
+   "gap_map_pp": -0.9
+  },
+  {
+   "county": "Monaghan",
+   "area_km2": 1295,
+   "ringforts": 939,
+   "raths": 914,
+   "cashels": 6,
+   "ringforts_per_km2": 0.725,
+   "enclosures": 50,
+   "ringfort_notes": 939,
+   "ringfort_placeholder_share": 0.0,
+   "ringfort_gone_all": 0.0554,
+   "ringfort_gone_1840": 0.0433,
+   "n_ringfort_gone_1840": 832,
+   "enclosure_gone_1840": 0.0833,
+   "n_enclosure_gone_1840": 24,
+   "ringfort_map_kept": 0.8377,
+   "n_ringfort_map": 832,
+   "other_map_kept": 0.7143,
+   "n_other_map": 35,
+   "median_elev_m": 102.0,
+   "gap_gone_pp": null,
+   "gap_map_pp": 12.3
+  },
+  {
+   "county": "Clare",
+   "area_km2": 3450,
+   "ringforts": 2401,
+   "raths": 1377,
+   "cashels": 952,
+   "ringforts_per_km2": 0.696,
+   "enclosures": 1578,
+   "ringfort_notes": 956,
+   "ringfort_placeholder_share": 0.6018,
+   "ringfort_gone_all": 0.0523,
+   "ringfort_gone_1840": 0.055,
+   "n_ringfort_gone_1840": 600,
+   "enclosure_gone_1840": 0.2949,
+   "n_enclosure_gone_1840": 295,
+   "ringfort_map_kept": 0.9703,
+   "n_ringfort_map": 607,
+   "other_map_kept": 0.8524,
+   "n_other_map": 359,
+   "median_elev_m": 44.6,
+   "gap_gone_pp": 24.0,
+   "gap_map_pp": 11.8
+  },
+  {
+   "county": "Cavan",
+   "area_km2": 1932,
+   "ringforts": 1202,
+   "raths": 1114,
+   "cashels": 58,
+   "ringforts_per_km2": 0.622,
+   "enclosures": 117,
+   "ringfort_notes": 1178,
+   "ringfort_placeholder_share": 0.02,
+   "ringfort_gone_all": 0.1494,
+   "ringfort_gone_1840": 0.3478,
+   "n_ringfort_gone_1840": 23,
+   "enclosure_gone_1840": 0.0,
+   "n_enclosure_gone_1840": 4,
+   "ringfort_map_kept": 0.5217,
+   "n_ringfort_map": 23,
+   "other_map_kept": 0.625,
+   "n_other_map": 8,
+   "median_elev_m": 98.3,
+   "gap_gone_pp": null,
+   "gap_map_pp": null
+  },
+  {
+   "county": "Leitrim",
+   "area_km2": 1589,
+   "ringforts": 981,
+   "raths": 786,
+   "cashels": 135,
+   "ringforts_per_km2": 0.617,
+   "enclosures": 142,
+   "ringfort_notes": 981,
+   "ringfort_placeholder_share": 0.0,
+   "ringfort_gone_all": 0.0306,
+   "ringfort_gone_1840": 0.028,
+   "n_ringfort_gone_1840": 644,
+   "enclosure_gone_1840": 0.0476,
+   "n_enclosure_gone_1840": 42,
+   "ringfort_map_kept": 0.9332,
+   "n_ringfort_map": 644,
+   "other_map_kept": 0.8125,
+   "n_other_map": 64,
+   "median_elev_m": 69.0,
+   "gap_gone_pp": 2.0,
+   "gap_map_pp": 12.1
+  },
+  {
+   "county": "Cork",
+   "area_km2": 7508,
+   "ringforts": 3863,
+   "raths": 3737,
+   "cashels": 123,
+   "ringforts_per_km2": 0.515,
+   "enclosures": 1156,
+   "ringfort_notes": 3856,
+   "ringfort_placeholder_share": 0.0018,
+   "ringfort_gone_all": 0.3428,
+   "ringfort_gone_1840": 0.0,
+   "n_ringfort_gone_1840": 3,
+   "enclosure_gone_1840": null,
+   "n_enclosure_gone_1840": 0,
+   "ringfort_map_kept": 1.0,
+   "n_ringfort_map": 3,
+   "other_map_kept": 1.0,
+   "n_other_map": 1,
+   "median_elev_m": 112.4,
+   "gap_gone_pp": null,
+   "gap_map_pp": null
+  },
+  {
+   "county": "Kerry",
+   "area_km2": 4807,
+   "ringforts": 2322,
+   "raths": 2084,
+   "cashels": 233,
+   "ringforts_per_km2": 0.483,
+   "enclosures": 1379,
+   "ringfort_notes": 1935,
+   "ringfort_placeholder_share": 0.1667,
+   "ringfort_gone_all": 0.2987,
+   "ringfort_gone_1840": 0.3061,
+   "n_ringfort_gone_1840": 98,
+   "enclosure_gone_1840": 0.5472,
+   "n_enclosure_gone_1840": 53,
+   "ringfort_map_kept": 0.5,
+   "n_ringfort_map": 100,
+   "other_map_kept": 0.3793,
+   "n_other_map": 58,
+   "median_elev_m": 53.4,
+   "gap_gone_pp": 24.1,
+   "gap_map_pp": 12.1
+  },
+  {
+   "county": "Galway",
+   "area_km2": 6151,
+   "ringforts": 2641,
+   "raths": 1516,
+   "cashels": 605,
+   "ringforts_per_km2": 0.429,
+   "enclosures": 1022,
+   "ringfort_notes": 2537,
+   "ringfort_placeholder_share": 0.0394,
+   "ringfort_gone_all": 0.2594,
+   "ringfort_gone_1840": 0.2917,
+   "n_ringfort_gone_1840": 1162,
+   "enclosure_gone_1840": 0.5455,
+   "n_enclosure_gone_1840": 198,
+   "ringfort_map_kept": 0.888,
+   "n_ringfort_map": 1187,
+   "other_map_kept": 0.7811,
+   "n_other_map": 338,
+   "median_elev_m": 56.2,
+   "gap_gone_pp": 25.4,
+   "gap_map_pp": 10.7
+  },
+  {
+   "county": "Mayo",
+   "area_km2": 5588,
+   "ringforts": 1987,
+   "raths": 1604,
+   "cashels": 291,
+   "ringforts_per_km2": 0.356,
+   "enclosures": 1507,
+   "ringfort_notes": 1230,
+   "ringfort_placeholder_share": 0.381,
+   "ringfort_gone_all": 0.1463,
+   "ringfort_gone_1840": 0.1405,
+   "n_ringfort_gone_1840": 1032,
+   "enclosure_gone_1840": 0.5989,
+   "n_enclosure_gone_1840": 354,
+   "ringfort_map_kept": 0.9283,
+   "n_ringfort_map": 1576,
+   "other_map_kept": 0.6377,
+   "n_other_map": 922,
+   "median_elev_m": 43.8,
+   "gap_gone_pp": 45.8,
+   "gap_map_pp": 29.1
+  },
+  {
+   "county": "Tipperary",
+   "area_km2": 4305,
+   "ringforts": 1480,
+   "raths": 1442,
+   "cashels": 31,
+   "ringforts_per_km2": 0.344,
+   "enclosures": 1849,
+   "ringfort_notes": 1480,
+   "ringfort_placeholder_share": 0.0,
+   "ringfort_gone_all": 0.1291,
+   "ringfort_gone_1840": 0.1081,
+   "n_ringfort_gone_1840": 583,
+   "enclosure_gone_1840": 0.4376,
+   "n_enclosure_gone_1840": 649,
+   "ringfort_map_kept": 0.9914,
+   "n_ringfort_map": 583,
+   "other_map_kept": 0.8322,
+   "n_other_map": 894,
+   "median_elev_m": 112.8,
+   "gap_gone_pp": 33.0,
+   "gap_map_pp": 15.9
+  },
+  {
+   "county": "Wexford",
+   "area_km2": 2367,
+   "ringforts": 792,
+   "raths": 641,
+   "cashels": 3,
+   "ringforts_per_km2": 0.335,
+   "enclosures": 271,
+   "ringfort_notes": 792,
+   "ringfort_placeholder_share": 0.0,
+   "ringfort_gone_all": 0.5593,
+   "ringfort_gone_1840": 0.338,
+   "n_ringfort_gone_1840": 361,
+   "enclosure_gone_1840": 0.4565,
+   "n_enclosure_gone_1840": 46,
+   "ringfort_map_kept": 0.5734,
+   "n_ringfort_map": 361,
+   "other_map_kept": 0.5728,
+   "n_other_map": 206,
+   "median_elev_m": 58.2,
+   "gap_gone_pp": 11.8,
+   "gap_map_pp": 0.1
+  },
+  {
+   "county": "Meath",
+   "area_km2": 2342,
+   "ringforts": 722,
+   "raths": 712,
+   "cashels": 6,
+   "ringforts_per_km2": 0.308,
+   "enclosures": 490,
+   "ringfort_notes": 719,
+   "ringfort_placeholder_share": 0.0042,
+   "ringfort_gone_all": 0.1544,
+   "ringfort_gone_1840": 0.036,
+   "n_ringfort_gone_1840": 472,
+   "enclosure_gone_1840": 0.1111,
+   "n_enclosure_gone_1840": 45,
+   "ringfort_map_kept": 0.9407,
+   "n_ringfort_map": 472,
+   "other_map_kept": 0.82,
+   "n_other_map": 150,
+   "median_elev_m": 93.6,
+   "gap_gone_pp": 7.5,
+   "gap_map_pp": 12.1
+  },
+  {
+   "county": "Louth",
+   "area_km2": 826,
+   "ringforts": 218,
+   "raths": 217,
+   "cashels": 0,
+   "ringforts_per_km2": 0.264,
+   "enclosures": 348,
+   "ringfort_notes": 218,
+   "ringfort_placeholder_share": 0.0,
+   "ringfort_gone_all": 0.2064,
+   "ringfort_gone_1840": 0.4,
+   "n_ringfort_gone_1840": 5,
+   "enclosure_gone_1840": 0.0,
+   "n_enclosure_gone_1840": 2,
+   "ringfort_map_kept": 0.6,
+   "n_ringfort_map": 5,
+   "other_map_kept": 1.0,
+   "n_other_map": 6,
+   "median_elev_m": 50.6,
+   "gap_gone_pp": null,
+   "gap_map_pp": null
+  },
+  {
+   "county": "Waterford",
+   "area_km2": 1858,
+   "ringforts": 455,
+   "raths": 268,
+   "cashels": 1,
+   "ringforts_per_km2": 0.245,
+   "enclosures": 373,
+   "ringfort_notes": 455,
+   "ringfort_placeholder_share": 0.0,
+   "ringfort_gone_all": 0.2088,
+   "ringfort_gone_1840": 0.2095,
+   "n_ringfort_gone_1840": 401,
+   "enclosure_gone_1840": 0.2346,
+   "n_enclosure_gone_1840": 179,
+   "ringfort_map_kept": 0.6783,
+   "n_ringfort_map": 401,
+   "other_map_kept": 0.4234,
+   "n_other_map": 222,
+   "median_elev_m": 95.7,
+   "gap_gone_pp": 2.5,
+   "gap_map_pp": 25.5
+  },
+  {
+   "county": "Kilkenny",
+   "area_km2": 2073,
+   "ringforts": 409,
+   "raths": 316,
+   "cashels": 5,
+   "ringforts_per_km2": 0.197,
+   "enclosures": 970,
+   "ringfort_notes": 233,
+   "ringfort_placeholder_share": 0.4303,
+   "ringfort_gone_all": 0.1416,
+   "ringfort_gone_1840": 0.133,
+   "n_ringfort_gone_1840": 203,
+   "enclosure_gone_1840": 0.4713,
+   "n_enclosure_gone_1840": 331,
+   "ringfort_map_kept": 0.9608,
+   "n_ringfort_map": 204,
+   "other_map_kept": 0.6959,
+   "n_other_map": 388,
+   "median_elev_m": 134.6,
+   "gap_gone_pp": 33.8,
+   "gap_map_pp": 26.5
+  },
+  {
+   "county": "Carlow",
+   "area_km2": 897,
+   "ringforts": 130,
+   "raths": 115,
+   "cashels": 15,
+   "ringforts_per_km2": 0.145,
+   "enclosures": 443,
+   "ringfort_notes": 130,
+   "ringfort_placeholder_share": 0.0,
+   "ringfort_gone_all": 0.1923,
+   "ringfort_gone_1840": 0.0,
+   "n_ringfort_gone_1840": 2,
+   "enclosure_gone_1840": 0.25,
+   "n_enclosure_gone_1840": 4,
+   "ringfort_map_kept": 1.0,
+   "n_ringfort_map": 2,
+   "other_map_kept": 1.0,
+   "n_other_map": 10,
+   "median_elev_m": 90.4,
+   "gap_gone_pp": null,
+   "gap_map_pp": null
+  },
+  {
+   "county": "Wicklow",
+   "area_km2": 2027,
+   "ringforts": 258,
+   "raths": 197,
+   "cashels": 19,
+   "ringforts_per_km2": 0.127,
+   "enclosures": 456,
+   "ringfort_notes": 258,
+   "ringfort_placeholder_share": 0.0,
+   "ringfort_gone_all": 0.1124,
+   "ringfort_gone_1840": 0.2143,
+   "n_ringfort_gone_1840": 14,
+   "enclosure_gone_1840": 0.3636,
+   "n_enclosure_gone_1840": 22,
+   "ringfort_map_kept": 0.5714,
+   "n_ringfort_map": 14,
+   "other_map_kept": 0.3077,
+   "n_other_map": 26,
+   "median_elev_m": 184.1,
+   "gap_gone_pp": null,
+   "gap_map_pp": null
+  },
+  {
+   "county": "Offaly",
+   "area_km2": 2001,
+   "ringforts": 254,
+   "raths": 200,
+   "cashels": 8,
+   "ringforts_per_km2": 0.127,
+   "enclosures": 456,
+   "ringfort_notes": 254,
+   "ringfort_placeholder_share": 0.0,
+   "ringfort_gone_all": 0.1732,
+   "ringfort_gone_1840": 0.3913,
+   "n_ringfort_gone_1840": 23,
+   "enclosure_gone_1840": 0.6207,
+   "n_enclosure_gone_1840": 29,
+   "ringfort_map_kept": 0.8696,
+   "n_ringfort_map": 23,
+   "other_map_kept": 0.5319,
+   "n_other_map": 47,
+   "median_elev_m": 86.1,
+   "gap_gone_pp": null,
+   "gap_map_pp": null
+  },
+  {
+   "county": "Donegal",
+   "area_km2": 4860,
+   "ringforts": 607,
+   "raths": 259,
+   "cashels": 221,
+   "ringforts_per_km2": 0.125,
+   "enclosures": 226,
+   "ringfort_notes": 600,
+   "ringfort_placeholder_share": 0.0115,
+   "ringfort_gone_all": 0.1483,
+   "ringfort_gone_1840": 0.2778,
+   "n_ringfort_gone_1840": 36,
+   "enclosure_gone_1840": 0.4167,
+   "n_enclosure_gone_1840": 12,
+   "ringfort_map_kept": 0.6286,
+   "n_ringfort_map": 35,
+   "other_map_kept": 0.8,
+   "n_other_map": 15,
+   "median_elev_m": 57.1,
+   "gap_gone_pp": null,
+   "gap_map_pp": null
+  },
+  {
+   "county": "Laois",
+   "area_km2": 1720,
+   "ringforts": 205,
+   "raths": 184,
+   "cashels": 4,
+   "ringforts_per_km2": 0.119,
+   "enclosures": 455,
+   "ringfort_notes": 205,
+   "ringfort_placeholder_share": 0.0,
+   "ringfort_gone_all": 0.1561,
+   "ringfort_gone_1840": 0.25,
+   "n_ringfort_gone_1840": 8,
+   "enclosure_gone_1840": 0.6429,
+   "n_enclosure_gone_1840": 14,
+   "ringfort_map_kept": 1.0,
+   "n_ringfort_map": 8,
+   "other_map_kept": 0.2857,
+   "n_other_map": 21,
+   "median_elev_m": 116.6,
+   "gap_gone_pp": null,
+   "gap_map_pp": null
+  },
+  {
+   "county": "Kildare",
+   "area_km2": 1695,
+   "ringforts": 177,
+   "raths": 143,
+   "cashels": 0,
+   "ringforts_per_km2": 0.104,
+   "enclosures": 610,
+   "ringfort_notes": 177,
+   "ringfort_placeholder_share": 0.0,
+   "ringfort_gone_all": 0.3616,
+   "ringfort_gone_1840": 0.2222,
+   "n_ringfort_gone_1840": 90,
+   "enclosure_gone_1840": 0.5429,
+   "n_enclosure_gone_1840": 70,
+   "ringfort_map_kept": 0.8667,
+   "n_ringfort_map": 90,
+   "other_map_kept": 0.6933,
+   "n_other_map": 163,
+   "median_elev_m": 86.5,
+   "gap_gone_pp": 32.1,
+   "gap_map_pp": 17.3
+  },
+  {
+   "county": "Dublin",
+   "area_km2": 922,
+   "ringforts": 76,
+   "raths": 7,
+   "cashels": 9,
+   "ringforts_per_km2": 0.082,
+   "enclosures": 373,
+   "ringfort_notes": 76,
+   "ringfort_placeholder_share": 0.0,
+   "ringfort_gone_all": 0.4474,
+   "ringfort_gone_1840": 0.3333,
+   "n_ringfort_gone_1840": 3,
+   "enclosure_gone_1840": 1.0,
+   "n_enclosure_gone_1840": 2,
+   "ringfort_map_kept": 0.0,
+   "n_ringfort_map": 3,
+   "other_map_kept": 0.6154,
+   "n_other_map": 13,
+   "median_elev_m": 66.3,
+   "gap_gone_pp": null,
+   "gap_map_pp": null
+  }
+ ],
+ "county_densest": {
+  "county": "Sligo",
+  "ringforts_per_km2": 1.249,
+  "ringforts": 2295
+ },
+ "county_sparsest": {
+  "county": "Dublin",
+  "ringforts_per_km2": 0.082,
+  "ringforts": 76
+ },
+ "county_most_ringforts": {
+  "county": "Cork",
+  "ringforts": 3863
+ },
+ "county_gap_gone": {
+  "n": 16,
+  "positive": 16,
+  "max": {
+   "county": "Mayo",
+   "gap_gone_pp": 45.8
+  },
+  "min": {
+   "county": "Leitrim",
+   "gap_gone_pp": 2.0
+  },
+  "median": 22.9
+ },
+ "county_gap_map": {
+  "n": 17,
+  "positive": 16,
+  "median": 12.1,
+  "max": {
+   "county": "Mayo",
+   "gap_map_pp": 29.1
+  },
+  "min": {
+   "county": "Longford",
+   "gap_map_pp": -0.9
+  }
+ },
+ "county_gone_max": {
+  "county": "Longford",
+  "ringfort_gone_1840": 0.3607,
+  "n_ringfort_gone_1840": 377
+ },
+ "county_gone_min": {
+  "county": "Leitrim",
+  "ringfort_gone_1840": 0.028,
+  "n_ringfort_gone_1840": 644
+ },
+ "county_placeholder_max": {
+  "county": "Clare",
+  "ringfort_placeholder_share": 0.6018
+ },
+ "hex": {
+  "side_km": 6,
+  "area_km2": 93.5,
+  "n": 813,
+  "max_per_km2": 3.047,
+  "median_per_km2": 0.296,
+  "n_over_1": 106
+ },
+ "premium_map_vs_barrow_pp": 2.4,
+ "premium_map_vs_moated_pp": 1.9,
+ "premium_map_vs_enclosure_pp": 19.8,
+ "premium_gone_vs_enclosure_pp": 23.8,
+ "ringfort_lost_from_map_share": 0.1137,
+ "ringfort_gone_1840_n": 1789,
+ "gb": {
+  "n": 112,
+  "by_element": {
+   "fairy": 70,
+   "hob": 21,
+   "puck": 9,
+   "pixie": 8,
+   "boggart": 4
+  },
+  "fairy_by_country": {
+   "Scotland": 37,
+   "England": 30,
+   "Wales": 3
+  },
+  "fairy_hillock": 20,
+  "by_type": {
+   "landform": 60,
+   "landcover": 35,
+   "hydrography": 13,
+   "populatedPlace": 4
+  },
+  "fairy_hillock_by_country": {
+   "Scotland": 20
+  }
+ },
+ "first_field_coverage": {
+  "Cork": 0.0013,
+  "Carlow": 0.0231,
+  "Cavan": 0.03,
+  "Kerry": 0.0517,
+  "Laois": 0.078,
+  "Donegal": 0.1038,
+  "Wicklow": 0.1163,
+  "Dublin": 0.1184,
+  "Offaly": 0.1457,
+  "Limerick": 0.2569,
+  "Sligo": 0.2584,
+  "Louth": 0.2615,
+  "Clare": 0.3965,
+  "Tipperary": 0.4459,
+  "Longford": 0.5435,
+  "Kilkenny": 0.5697,
+  "Galway": 0.5998,
+  "Kildare": 0.8136,
+  "Mayo": 0.9381,
+  "Meath": 0.9765,
+  "Monaghan": 0.9904,
+  "Waterford": 0.9912,
+  "Wexford": 0.9937,
+  "Roscommon": 0.9975,
+  "Leitrim": 0.999,
+  "Westmeath": 0.9994
+ },
+ "first_field_low": [
+  "Cork",
+  "Carlow",
+  "Cavan",
+  "Kerry",
+  "Laois"
+ ]
+}
