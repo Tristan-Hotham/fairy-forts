@@ -475,5 +475,6 @@ document.getElementById("quotes").innerHTML = R.quotes.map(q => `<figure class="
   document.querySelectorAll("[data-cm]").forEach(b => b.onclick = () => { cm = b.dataset.cm; document.querySelectorAll("[data-cm]").forEach(x => x.setAttribute("aria-pressed", x === b)); draw(); });
   new ResizeObserver(draw).observe(box); draw(); redraws.push(draw); })();
 </script>
+<script src="https://tristan-hotham.github.io/assets/site-nav.js" defer></script>
 </body>
 </html>
